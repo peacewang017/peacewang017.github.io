@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Archives: 2024 | Peacewang&#39;s blog</title>
+  <title>PKE kernel labs | Peacewang&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Peacewang&#39;s blog">
-<meta property="og:url" content="http://peacewang017.github.io/archives/2024/index.html">
+  <meta name="description" content="做了什么上学期完成了一些基于 RISC-V 指令集的 PKE(Proxy Kernel for Education) 操作系统内核的基础实验，这学期的课程设计要求完成后面的挑战部分。实验的代码和文档如下： 1. 代码：https:&#x2F;&#x2F;gitee.com&#x2F;hustos&#x2F;riscv-pke  2. 文档：https:&#x2F;&#x2F;gitee.com&#x2F;hustos&#x2F;pke-doc  3. 我的完成源码：https">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PKE kernel labs">
+<meta property="og:url" content="http://peacewang017.github.io/2024/03/17/PKE-kernel-labs/index.html">
 <meta property="og:site_name" content="Peacewang&#39;s blog">
+<meta property="og:description" content="做了什么上学期完成了一些基于 RISC-V 指令集的 PKE(Proxy Kernel for Education) 操作系统内核的基础实验，这学期的课程设计要求完成后面的挑战部分。实验的代码和文档如下： 1. 代码：https:&#x2F;&#x2F;gitee.com&#x2F;hustos&#x2F;riscv-pke  2. 文档：https:&#x2F;&#x2F;gitee.com&#x2F;hustos&#x2F;pke-doc  3. 我的完成源码：https">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-16T16:25:06.000Z">
+<meta property="article:modified_time" content="2024-03-16T16:53:49.754Z">
 <meta property="article:author" content="Jason Luo">
 <meta name="twitter:card" content="summary">
   
@@ -71,58 +75,60 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2024/03/17/PKE-kernel-labs/" class="archive-article-date">
-  <time class="dt-published" datetime="2024-03-16T16:25:06.000Z" itemprop="datePublished">Mar 17</time>
+        <section id="main"><article id="post-PKE-kernel-labs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/17/PKE-kernel-labs/" class="article-date">
+  <time class="dt-published" datetime="2024-03-16T16:25:06.000Z" itemprop="datePublished">2024-03-17</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/17/PKE-kernel-labs/">PKE kernel labs</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      PKE kernel labs
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2024/03/17/First-blog/" class="archive-article-date">
-  <time class="dt-published" datetime="2024-03-16T16:19:30.000Z" itemprop="datePublished">Mar 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/17/First-blog/">First blog</a>
-    </h1>
-  
+        <h1 id="做了什么"><a href="#做了什么" class="headerlink" title="做了什么"></a>做了什么</h1><p>上学期完成了一些基于 RISC-V 指令集的 PKE(Proxy Kernel for Education) 操作系统内核的基础实验，这学期的课程设计要求完成后面的挑战部分。实验的代码和文档如下：</p>
+<pre><code>1. 代码：https://gitee.com/hustos/riscv-pke
 
-    </header>
+2. 文档：https://gitee.com/hustos/pke-doc
+
+3. 我的完成源码：https://github.com/peacewang017/OS_labs
+</code></pre>
+<p>实验其实仍然是完善一些系统调用，不过比上学期的要复杂和个性化许多，本篇主要记载一些自己实验时遇到的坑点和待完善的部分。</p>
+<h1 id="PKE"><a href="#PKE" class="headerlink" title="PKE"></a>PKE</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://peacewang017.github.io/2024/03/17/PKE-kernel-labs/" data-id="cltubv6630001qttu5efc0z0y" data-title="PKE kernel labs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/03/17/First-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">First blog</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
