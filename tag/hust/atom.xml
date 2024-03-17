@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://peacewang017.github.io</id>
+    <id>https://peacewang.top</id>
     <title>peacewang&#39;s blog • Posts by &#34;hust&#34; tag</title>
-    <link href="http://peacewang017.github.io" />
+    <link href="https://peacewang.top" />
     <updated>2024-03-16T17:24:55.000Z</updated>
     <category term="HUST" />
     <category term="OS" />
     <category term="kernel" />
     <entry>
-        <id>http://peacewang017.github.io/2024/03/17/PKE-kernel-labs/</id>
+        <id>https://peacewang.top/2024/03/17/PKE-kernel-labs/</id>
         <title>PKE kernel labs</title>
-        <link rel="alternate" href="http://peacewang017.github.io/2024/03/17/PKE-kernel-labs/"/>
+        <link rel="alternate" href="https://peacewang.top/2024/03/17/PKE-kernel-labs/"/>
         <content type="html">&lt;h1 id=&#34;1-做了什么&#34;&gt;&lt;a href=&#34;#1-做了什么&#34; class=&#34;headerlink&#34; title=&#34;1. 做了什么&#34;&gt;&lt;/a&gt;1. 做了什么&lt;/h1&gt;&lt;p&gt;上学期完成了一些基于 RISC-V 指令集的 PKE(Proxy Kernel for Education) 操作系统内核的基础实验，这学期的课程设计要求完成后面的挑战部分。实验的代码和文档如下：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;1. 代码：https://gitee.com/hustos/riscv-pke
 
