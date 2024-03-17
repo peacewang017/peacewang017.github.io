@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://peacewang017.github.io</id>
-    <title>peacewang&#39;s blog</title>
+    <title>peacewang&#39;s blog • Posts by &#34;study&#34; category</title>
     <link href="http://peacewang017.github.io" />
     <updated>2024-03-16T17:24:55.000Z</updated>
     <category term="HUST" />
@@ -31,14 +31,5 @@
         <category term="OS" />
         <category term="kernel" />
         <updated>2024-03-16T17:24:55.000Z</updated>
-    </entry>
-    <entry>
-        <id>http://peacewang017.github.io/2024/03/17/First-blog/</id>
-        <title>First blog</title>
-        <link rel="alternate" href="http://peacewang017.github.io/2024/03/17/First-blog/"/>
-        <content type="html">&lt;p&gt;Now, in 2024&amp;#x2F;3&amp;#x2F;17, this blog is put into user, it is for briefly recording my life and study.&lt;/p&gt;
-&lt;p&gt;现在是 2024 年 3 月 17 日，这个博客开始投入使用,它用于简要记录我的生活和学习。&lt;/p&gt;
-</content>
-        <updated>2024-03-16T16:19:30.000Z</updated>
     </entry>
 </feed>
