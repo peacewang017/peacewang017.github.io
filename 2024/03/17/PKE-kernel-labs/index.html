@@ -270,7 +270,7 @@
 3. 我的完成源码：https://github.com/peacewang017/OS_labs
 </code></pre>
 <p>实验其实仍然是完善一些系统调用，不过比上学期的要复杂和个性化许多，本篇主要记载一些自己实验时遇到的坑点和待完善的部分。</p>
-<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><h2 id="2-1-lab1-challenge2-errorline"><a href="#2-1-lab1-challenge2-errorline" class="headerlink" title="2.1 lab1_challenge2 errorline"></a>2.1 lab1_challenge2 errorline</h2><p>实际上与打印用户调用栈相同，会读ELF文件即可。</p>
+<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><h2 id="2-1-L1C2-errorline"><a href="#2-1-L1C2-errorline" class="headerlink" title="2.1 L1C2 errorline"></a>2.1 L1C2 errorline</h2><p>实际上与打印用户调用栈相同，会读ELF文件即可。</p>
 <h3 id="ELF-结构"><a href="#ELF-结构" class="headerlink" title="ELF 结构"></a>ELF 结构</h3><p>ELF有两种视图：链接(link)视图和执行(execute)视图，在两种视图下有两个不同的节头表(section header table)，分别指向链接视图下的节(section)和执行视图下的段(segment)。</p>
 <p><img src="/2024/03/17/PKE-kernel-labs/ELF.png"></p>
 <p>有趣的是，在 ELF 中，所有字符串都用一个 Elf_32_word 变量来表示，这个变量的值是该字符串在符号表(strtab)中的偏移量，所以我们先取出 strtab 。</p>
