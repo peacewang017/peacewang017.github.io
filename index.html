@@ -1,255 +1,339 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Peacewang&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Peacewang&#39;s blog">
-<meta property="og:url" content="http://peacewang017.github.io/index.html">
-<meta property="og:site_name" content="Peacewang&#39;s blog">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Jason Luo">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Peacewang's blog" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <meta charset="UTF-8">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-  
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Peacewang&#39;s blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="Jason Luo">
+
+
+
+
+
+<title>Peacewang&#39;s blog</title>
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/nprogress/nprogress.css">
+
+
+
+<script src="/lib/jquery.min.js"></script>
+
+
+<script src="/lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="/lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Peacewang's blog" type="application/atom+xml">
+</head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200 relative">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="Peacewang's blog" />
+          Peacewang&#39;s blog
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://peacewang017.github.io"></form>
       </div>
-    </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="/archives">Archives</a>
+        
+          <a class="hidden sm:flex" href="/category">Categories</a>
+        
+          <a class="hidden sm:flex" href="/tag">Tags</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/peacewang017">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5 hidden sm:flex" title="Github" href="rss2.xml">
+          <iconify-icon width="20" icon="ri:rss-line"></iconify-icon>
+        </a>
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
   </div>
 </header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-PKE-kernel-labs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/03/17/PKE-kernel-labs/" class="article-date">
-  <time class="dt-published" datetime="2024-03-16T17:24:55.000Z" itemprop="datePublished">2024-03-17</time>
-</a>
-    
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="/archives" class="flex h-12 sm:h-auto items-center">Archives</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="/category" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="/tag" class="flex h-12 sm:h-auto items-center">Tags</a>
+        </li>
+      
+    </ul>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/03/17/PKE-kernel-labs/">PKE kernel labs</a>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="pt-14">
+    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
+  <div class="flex flex-col h-48 items-center justify-center">
+    <h1 class="site-title text-4xl leading-relaxed">
+      Peacewang&#39;s blog
     </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+    <p class="text-gray-500 mt-2">
       
-        <h1 id="1-做了什么"><a href="#1-做了什么" class="headerlink" title="1. 做了什么"></a>1. 做了什么</h1><p>上学期完成了一些基于 RISC-V 指令集的 PKE(Proxy Kernel for Education) 操作系统内核的基础实验，这学期的课程设计要求完成后面的挑战部分。实验的代码和文档如下：</p>
-<pre><code>1. 代码：https://gitee.com/hustos/riscv-pke
-
-2. 文档：https://gitee.com/hustos/pke-doc
-
-3. 我的完成源码：https://github.com/peacewang017/OS_labs
-</code></pre>
-<p>实验其实仍然是完善一些系统调用，不过比上学期的要复杂和个性化许多，本篇主要记载一些自己实验时遇到的坑点和待完善的部分。</p>
-<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><h2 id="2-1-lab1-challenge2-errorline"><a href="#2-1-lab1-challenge2-errorline" class="headerlink" title="2.1 lab1_challenge2 errorline"></a>2.1 lab1_challenge2 errorline</h2><p>实际上与打印用户调用栈相同，会读ELF文件即可。</p>
-<h3 id="ELF-结构"><a href="#ELF-结构" class="headerlink" title="ELF 结构"></a>ELF 结构</h3><p>ELF有两种视图：链接(link)视图和执行(execute)视图，在两种视图下有两个不同的节头表(section header table)，分别指向链接视图下的节(section)和执行视图下的段(segment)。</p>
-<p><img src="/2024/03/17/PKE-kernel-labs/ELF.png" alt="alt text"></p>
-<p>有趣的是，在 ELF 中，所有字符串都用一个 Elf_32_word 变量来表示，这个变量的值是该字符串在符号表(strtab)中的偏移量，所以我们先取出 strtab 。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">elf_status <span class="title function_">elf_load</span><span class="params">(elf_ctx *ctx)</span> &#123;</span><br><span class="line">    <span class="comment">// elf_prog_header structure is defined in kernel/elf.h</span></span><br><span class="line">    elf_prog_header ph_addr;</span><br><span class="line">    <span class="type">int</span> i, off;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// traverse the elf program segment headers</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>, off = ctx-&gt;ehdr.phoff; i &lt; ctx-&gt;ehdr.phnum; i++, off += <span class="keyword">sizeof</span>(ph_addr)) &#123;</span><br><span class="line">    <span class="comment">// read segment headers</span></span><br><span class="line">    <span class="keyword">if</span> (elf_fpread(ctx, (<span class="type">void</span> *)&amp;ph_addr, <span class="keyword">sizeof</span>(ph_addr), off) != <span class="keyword">sizeof</span>(ph_addr)) <span class="keyword">return</span> EL_EIO;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ph_addr.type != ELF_PROG_LOAD) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">if</span> (ph_addr.memsz &lt; ph_addr.filesz) <span class="keyword">return</span> EL_ERR;</span><br><span class="line">    <span class="keyword">if</span> (ph_addr.vaddr + ph_addr.memsz &lt; ph_addr.vaddr) <span class="keyword">return</span> EL_ERR;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// allocate memory block before elf loading</span></span><br><span class="line">    <span class="type">void</span> *dest = elf_alloc_mb(ctx, ph_addr.vaddr, ph_addr.vaddr, ph_addr.memsz);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// actual loading</span></span><br><span class="line">    <span class="keyword">if</span> (elf_fpread(ctx, dest, ph_addr.memsz, ph_addr.off) != ph_addr.memsz)</span><br><span class="line">        <span class="keyword">return</span> EL_EIO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读文件用buf</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// find strtab header</span></span><br><span class="line">    uint64 strtab_sh_off = ctx-&gt;ehdr.shoff + ctx-&gt;ehdr.shstrndx * <span class="keyword">sizeof</span>(elf_sect_header);</span><br><span class="line">    elf_sect_header strtab_sh;</span><br><span class="line">    elf_fpread(ctx, (<span class="type">void</span>*)(&amp;strtab_sh), <span class="keyword">sizeof</span>(elf_sect_header), strtab_sh_off);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// find strtab</span></span><br><span class="line">    uint64 strtab_off = strtab_sh.offset;</span><br><span class="line">    uint64 strtab_size = strtab_sh.size;</span><br><span class="line">    <span class="type">char</span> strtab[strtab_size];</span><br><span class="line">    elf_fpread(ctx, (<span class="type">void</span>*)strtab, strtab_size, strtab_off);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// traverse to find debugline header</span></span><br><span class="line">    elf_sect_header debugline_sh;</span><br><span class="line">    <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(; index &lt; ctx-&gt;ehdr.shnum; index++)&#123;</span><br><span class="line">        uint64 this_sh_off = ctx-&gt;ehdr.shoff + index * <span class="keyword">sizeof</span>(elf_sect_header);</span><br><span class="line">        elf_fpread(ctx, (<span class="type">void</span>*)(&amp;debugline_sh), <span class="keyword">sizeof</span>(elf_sect_header), this_sh_off);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(<span class="string">&quot;.debug_line&quot;</span>, strtab + debugline_sh.name) == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(index == ctx-&gt;ehdr.shnum)&#123;</span><br><span class="line">        sprint(<span class="string">&quot;section &#x27;.debug_line&#x27; not found in elf\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// find debugline</span></span><br><span class="line">    uint64 debugline_off = debugline_sh.offset;</span><br><span class="line">    uint64 debugline_size = debugline_sh.size;</span><br><span class="line">    elf_fpread(ctx, (<span class="type">void</span>*)debugline, debugline_size, debugline_off);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// call make_addr_line</span></span><br><span class="line">    make_addr_line(ctx, debugline, debugline_size);</span><br><span class="line">    <span class="keyword">return</span> EL_OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接着，按照 PKE 的进程和文件组织方法进行后续处理，这里不再赘述。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://peacewang017.github.io/2024/03/17/PKE-kernel-labs/" data-id="cltud41tk000199tu2j1e3jhf" data-title="PKE kernel labs" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
+    </p>
   </div>
   
-</article>
-
-
-
-  
-    <article id="post-First-blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/03/17/First-blog/" class="article-date">
-  <time class="dt-published" datetime="2024-03-16T16:19:30.000Z" itemprop="datePublished">2024-03-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/03/17/First-blog/">First blog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Now, in 2024&#x2F;3&#x2F;17, this blog is put into user, it is for briefly recording my life and study.</p>
-<p>现在是2024年3月17日，这个博客开始投入使用,它用于简要记录我的生活和学习。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://peacewang017.github.io/2024/03/17/First-blog/" data-id="cltud41tg000099tu84pp0x5w" data-title="First blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
   
     
-
-  
     
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/03/17/PKE-kernel-labs/">PKE kernel labs</a>
-          </li>
-        
-          <li>
-            <a href="/2024/03/17/First-blog/">First blog</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+      <div class="relative pointer-events-none">
+        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2024</span>
       </div>
-      <footer id="footer">
+    
+    <a style="--stagger:0" href="/2024/03/17/PKE-kernel-labs/" data-animate>
+      <header>
+        <h2 class="font-bold text-xl">
+          PKE kernel labs
+        </h2>
+      </header>
+      <section class="text-gray-400 my-2 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          Mar 17
+          ·
+          2 min
+        </p>
+      </section>
+    </a>
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2024 Jason Luo<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    
+    
+    <a style="--stagger:1" href="/2024/03/17/First-blog/" data-animate>
+      <header>
+        <h2 class="font-bold text-xl">
+          First blog
+        </h2>
+      </header>
+      <section class="text-gray-400 my-2 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          Mar 17
+          ·
+          1 min
+        </p>
+      </section>
+    </a>
+  
+</section>
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="color: inherit;">CC BY-NC-SA 4.0</a>
+    <span>© 2022</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
 </footer>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
+  <div class="back-to-top box-border fixed right-6 z-1024 -bottom-20 rounded py-1 px-1 bg-slate-900 opacity-60 text-white cursor-pointer text-center dark:bg-slate-600">
+    <span class="flex justify-center items-center text-sm">
+      <iconify-icon width="18" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+      <span id="scrollpercent"><span>0</span> %</span>
+    </span>
   </div>
+  
+<script src="/js/main.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+      const mapleCount = "10";
+      const speed = "0.5";
+      const mapleEl = document.getElementById("maple");
+      const maples = Array.from({ length: mapleCount }).map(() => {
+        const maple = document.createElement("div");
+        const scale = Math.random() * 0.5 + 0.5;
+        const offset = Math.random() * 2 - 1;
+        const x = Math.random() * mapleEl.clientWidth;
+        const y = -Math.random() * mapleEl.clientHeight;
+        const duration = 10 / speed;
+        const delay = -duration;
+        maple.className = "maple";
+        maple.style.width = `${24 * scale}px`;
+        maple.style.height = `${24 * scale}px`;
+        maple.style.left = `${x}px`;
+        maple.style.top = `${y}px`;
+        maple.style.setProperty("--maple-fall-offset", offset);
+        maple.style.setProperty("--maple-fall-height", `${Math.abs(y) + mapleEl.clientHeight}px`);
+        maple.style.animation = `fall ${duration}s linear infinite`;
+        maple.style.animationDelay = `${delay}s`;
+        mapleEl.appendChild(maple)
+        return maple
+      })
+    });
+  </script>
+  
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden" id="maple"></div>
 </body>
+
 </html>
