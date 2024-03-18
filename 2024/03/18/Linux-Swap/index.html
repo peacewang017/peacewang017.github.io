@@ -15,7 +15,7 @@
 
 
 
-<title>PKE labs | peacewang&#39;s blog</title>
+<title>Linux Swap | peacewang&#39;s blog</title>
 
 
 
@@ -155,7 +155,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        PKE labs
+        Linux Swap
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -231,13 +231,13 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        PKE labs
+        Linux Swap
       </h1>
       <div>
         <section class="flex items-center gap-3 text-sm">
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="carbon-calendar" ></iconify-icon>
-            <time>2024-03-17</time>
+            <time>2024-03-18</time>
           </span>
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
@@ -247,14 +247,8 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>576 words</span>
+            <span>643 words</span>
           </span>
-          
-            <span class="text-gray-400">·</span>
-            <span class="flex items-center gap-1">
-              <iconify-icon width="16" icon="icon-park-outline:box" class="mr-2"></iconify-icon>
-              <a class="article-category-link" href="/categories/study/">study</a>
-            </span>
           
         </section>
       </div>
@@ -262,27 +256,36 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <h1 id="1-做了什么"><a href="#1-做了什么" class="headerlink" title="1. 做了什么"></a>1. 做了什么</h1><p>上学期完成了一些基于 RISC-V 指令集的 PKE(Proxy Kernel for Education) 的基础实验，这学期的课程设计要求完成后面的挑战部分。实验的代码和文档如下：</p>
-<pre><code>1. 代码：https://gitee.com/hustos/riscv-pke
-
-2. 文档：https://gitee.com/hustos/pke-doc
-
-3. 我的完成源码：https://github.com/peacewang017/OS_labs
-</code></pre>
-<p>实验其实仍然是完善一些系统调用，不过比上学期的要复杂和个性化许多，本篇主要记载一些自己实验时遇到的坑点和待完善的部分。</p>
-<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><h2 id="2-1-L1C2-errorline"><a href="#2-1-L1C2-errorline" class="headerlink" title="2.1 L1C2 errorline"></a>2.1 L1C2 errorline</h2><p>实际上与打印用户调用栈相同，会读ELF文件即可。</p>
-<h3 id="ELF-结构"><a href="#ELF-结构" class="headerlink" title="ELF 结构"></a>ELF 结构</h3><p>ELF有两种视图：链接(link)视图和执行(execute)视图，在两种视图下有两个不同的节头表(section header table)，分别指向链接视图下的节(section)和执行视图下的段(segment)。</p>
-<p><img src="/2024/03/17/PKE-kernel-labs/ELF.png"></p>
-<p>有趣的是，在 ELF 中，所有字符串都用一个 Elf_32_word 变量来表示，这个变量的值是该字符串在符号表(strtab)中的偏移量，所以我们先取出 strtab 。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">elf_status <span class="title function_">elf_load</span><span class="params">(elf_ctx *ctx)</span> &#123;</span><br><span class="line">    <span class="comment">// elf_prog_header structure is defined in kernel/elf.h</span></span><br><span class="line">    elf_prog_header ph_addr;</span><br><span class="line">    <span class="type">int</span> i, off;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// traverse the elf program segment headers</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>, off = ctx-&gt;ehdr.phoff; i &lt; ctx-&gt;ehdr.phnum; i++, off += <span class="keyword">sizeof</span>(ph_addr)) &#123;</span><br><span class="line">    <span class="comment">// read segment headers</span></span><br><span class="line">    <span class="keyword">if</span> (elf_fpread(ctx, (<span class="type">void</span> *)&amp;ph_addr, <span class="keyword">sizeof</span>(ph_addr), off) != <span class="keyword">sizeof</span>(ph_addr)) <span class="keyword">return</span> EL_EIO;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ph_addr.type != ELF_PROG_LOAD) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">if</span> (ph_addr.memsz &lt; ph_addr.filesz) <span class="keyword">return</span> EL_ERR;</span><br><span class="line">    <span class="keyword">if</span> (ph_addr.vaddr + ph_addr.memsz &lt; ph_addr.vaddr) <span class="keyword">return</span> EL_ERR;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// allocate memory block before elf loading</span></span><br><span class="line">    <span class="type">void</span> *dest = elf_alloc_mb(ctx, ph_addr.vaddr, ph_addr.vaddr, ph_addr.memsz);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// actual loading</span></span><br><span class="line">    <span class="keyword">if</span> (elf_fpread(ctx, dest, ph_addr.memsz, ph_addr.off) != ph_addr.memsz)</span><br><span class="line">        <span class="keyword">return</span> EL_EIO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读文件用buf</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// find strtab header</span></span><br><span class="line">    uint64 strtab_sh_off = ctx-&gt;ehdr.shoff + ctx-&gt;ehdr.shstrndx * <span class="keyword">sizeof</span>(elf_sect_header);</span><br><span class="line">    elf_sect_header strtab_sh;</span><br><span class="line">    elf_fpread(ctx, (<span class="type">void</span>*)(&amp;strtab_sh), <span class="keyword">sizeof</span>(elf_sect_header), strtab_sh_off);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// find strtab</span></span><br><span class="line">    uint64 strtab_off = strtab_sh.offset;</span><br><span class="line">    uint64 strtab_size = strtab_sh.size;</span><br><span class="line">    <span class="type">char</span> strtab[strtab_size];</span><br><span class="line">    elf_fpread(ctx, (<span class="type">void</span>*)strtab, strtab_size, strtab_off);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// traverse to find debugline header</span></span><br><span class="line">    elf_sect_header debugline_sh;</span><br><span class="line">    <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(; index &lt; ctx-&gt;ehdr.shnum; index++)&#123;</span><br><span class="line">        uint64 this_sh_off = ctx-&gt;ehdr.shoff + index * <span class="keyword">sizeof</span>(elf_sect_header);</span><br><span class="line">        elf_fpread(ctx, (<span class="type">void</span>*)(&amp;debugline_sh), <span class="keyword">sizeof</span>(elf_sect_header), this_sh_off);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(<span class="string">&quot;.debug_line&quot;</span>, strtab + debugline_sh.name) == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(index == ctx-&gt;ehdr.shnum)&#123;</span><br><span class="line">        sprint(<span class="string">&quot;section &#x27;.debug_line&#x27; not found in elf\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// find debugline</span></span><br><span class="line">    uint64 debugline_off = debugline_sh.offset;</span><br><span class="line">    uint64 debugline_size = debugline_sh.size;</span><br><span class="line">    elf_fpread(ctx, (<span class="type">void</span>*)debugline, debugline_size, debugline_off);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// call make_addr_line</span></span><br><span class="line">    make_addr_line(ctx, debugline, debugline_size);</span><br><span class="line">    <span class="keyword">return</span> EL_OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接着，按照 PKE 的进程和文件组织方法进行后续处理，这里不再赘述。</p>
-<h2 id="2-2-L1C3-malloc-and-heap"><a href="#2-2-L1C3-malloc-and-heap" class="headerlink" title="2.2 L1C3 malloc and heap"></a>2.2 L1C3 malloc and heap</h2><p>未完待续…</p>
+    <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>学习操作系统的时候，我们知道 MMU 硬件和页表共同完成了进程虚拟空间到物理内存空间的转换。</p>
+<p>但是仔细想想，如果一个程序过大，操作系统如何管理内存呢？</p>
+<h1 id="查资料"><a href="#查资料" class="headerlink" title="查资料"></a>查资料</h1><p>我们从 PTE 入手，下面是一条 PTE 对页的描述记录：</p>
+<p><img src="/2024/03/18/Linux-Swap/PTE.png"></p>
+<p>第 0 位为有效位，在有效位为 0 时，根据 1 - 31 位的数据，我们分为两种情况讨论:</p>
+<h2 id="1-1-31-位为0，页不在进程的地址空间"><a href="#1-1-31-位为0，页不在进程的地址空间" class="headerlink" title="1 1 - 31 位为0，页不在进程的地址空间"></a>1 1 - 31 位为0，页不在进程的地址空间</h2><p>这种情况类似于正常的文件加载入内存的过程，需要请求调页，操作系统直接通过 VFS -&gt; 实际FS 来得到目标页在磁盘中的位置。</p>
+<h2 id="2-1-31-位非0，页被换出到磁盘"><a href="#2-1-31-位非0，页被换出到磁盘" class="headerlink" title="2 1 - 31 位非0，页被换出到磁盘"></a>2 1 - 31 位非0，页被换出到磁盘</h2><p>这种换出再换入的情况被称为 Swap ，磁盘为 Swap 的情况专门组织了若干交换区，每个交换区中有若干页槽(page slot, 用于存放换出的页)，交换区与文件系统区独立，被不同地格式化。</p>
+<p>所以，在这种 Swap 的情况下，PTE的关于该页的条目被以如下方式解读：</p>
+<p><img src="/2024/03/18/Linux-Swap/PTE2.png"></p>
+<p>1－7- 被解读成一个交换区的区号，而 8－31 位被解读成页槽索引，而页槽[0]是此交换区的管理块，所以有效的索引从 1 开始。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>所以，内存与磁盘的 Swap 过程可以粗略理解为:</p>
+<ol>
+<li><p>磁盘在系统的物理内存不够用的时候，把一部分空间释放出来，以供当前运行的程序使用，这部分被称为交换(Swap)区。</p>
+</li>
+<li><p>目标页数据不在内存中，且是由于换出策略保存在交换区时，可以通过 PTE 表项找到交换区中保存该数据的位置。</p>
+</li>
+<li><p>被换出的页可能来自一些很长时间没有什么操作的程序，这些被释放的页被临时保存到 Swap 分区中，等到程序要运行时，再从 Swap 分区中恢复保存的数据到内存中。</p>
+</li>
+<li><p>当然不是所有从物理内存中交换出来的数据都会被放到 Swap 中，有相当一部分数据被直接交换到文件系统。例如，有的程序会打开一些文件，对文件进行读写，当需要将这些程序的内存空间交换出去时，就没有必要将文件部分的数据放到 Swap 空间中了，而可以直接对 实际FS 进行修改。</p>
+</li>
+</ol>
 
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
     
+      
+        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
+          <a href="/tags/Linux/">Linux</a>
+        </span>
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
           <a href="/tags/OS/">OS</a>
@@ -293,7 +296,7 @@
         </span>
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/HUST/">HUST</a>
+          <a href="/tags/SSD/">SSD</a>
         </span>
       
     
@@ -302,16 +305,11 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2024/03/18/Linux-Swap/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          Linux Swap
-        </a>
-      
     </div>
     <div>
       
-        <a href="/2024/03/17/First-blog/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          First blog
+        <a href="/2024/03/17/PKE-kernel-labs/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          PKE labs
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       

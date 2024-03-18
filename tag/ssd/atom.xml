@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://peacewang017.github.io</id>
+    <title>peacewang&#39;s blog • Posts by &#34;ssd&#34; tag</title>
+    <link href="https://peacewang017.github.io" />
+    <updated>2024-03-18T08:34:20.000Z</updated>
+    <category term="Linux" />
+    <category term="OS" />
+    <category term="kernel" />
+    <category term="SSD" />
+    <category term="HUST" />
+    <entry>
+        <id>https://peacewang017.github.io/2024/03/18/Linux-Swap/</id>
+        <title>Linux Swap</title>
+        <link rel="alternate" href="https://peacewang017.github.io/2024/03/18/Linux-Swap/"/>
+        <content type="html">&lt;h1 id=&#34;引入&#34;&gt;&lt;a href=&#34;#引入&#34; class=&#34;headerlink&#34; title=&#34;引入&#34;&gt;&lt;/a&gt;引入&lt;/h1&gt;&lt;p&gt;学习操作系统的时候，我们知道 MMU 硬件和页表共同完成了进程虚拟空间到物理内存空间的转换。&lt;/p&gt;
+&lt;p&gt;但是仔细想想，如果一个程序过大，操作系统如何管理内存呢？&lt;/p&gt;
+&lt;h1 id=&#34;查资料&#34;&gt;&lt;a href=&#34;#查资料&#34; class=&#34;headerlink&#34; title=&#34;查资料&#34;&gt;&lt;/a&gt;查资料&lt;/h1&gt;&lt;p&gt;我们从 PTE 入手，下面是一条 PTE 对页的描述记录：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/2024/03/18/Linux-Swap/PTE.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;第 0 位为有效位，在有效位为 0 时，根据 1 - 31 位的数据，我们分为两种情况讨论:&lt;/p&gt;
+&lt;h2 id=&#34;1-1-31-位为0，页不在进程的地址空间&#34;&gt;&lt;a href=&#34;#1-1-31-位为0，页不在进程的地址空间&#34; class=&#34;headerlink&#34; title=&#34;1 1 - 31 位为0，页不在进程的地址空间&#34;&gt;&lt;/a&gt;1 1 - 31 位为0，页不在进程的地址空间&lt;/h2&gt;&lt;p&gt;这种情况类似于正常的文件加载入内存的过程，需要请求调页，操作系统直接通过 VFS -&amp;gt; 实际FS 来得到目标页在磁盘中的位置。&lt;/p&gt;
+&lt;h2 id=&#34;2-1-31-位非0，页被换出到磁盘&#34;&gt;&lt;a href=&#34;#2-1-31-位非0，页被换出到磁盘&#34; class=&#34;headerlink&#34; title=&#34;2 1 - 31 位非0，页被换出到磁盘&#34;&gt;&lt;/a&gt;2 1 - 31 位非0，页被换出到磁盘&lt;/h2&gt;&lt;p&gt;这种换出再换入的情况被称为 Swap ，磁盘为 Swap 的情况专门组织了若干交换区，每个交换区中有若干页槽(page slot, 用于存放换出的页)，交换区与文件系统区独立，被不同地格式化。&lt;/p&gt;
+&lt;p&gt;所以，在这种 Swap 的情况下，PTE的关于该页的条目被以如下方式解读：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/2024/03/18/Linux-Swap/PTE2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;1－7- 被解读成一个交换区的区号，而 8－31 位被解读成页槽索引，而页槽[0]是此交换区的管理块，所以有效的索引从 1 开始。&lt;/p&gt;
+&lt;h1 id=&#34;总结&#34;&gt;&lt;a href=&#34;#总结&#34; class=&#34;headerlink&#34; title=&#34;总结&#34;&gt;&lt;/a&gt;总结&lt;/h1&gt;&lt;p&gt;所以，内存与磁盘的 Swap 过程可以粗略理解为:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;磁盘在系统的物理内存不够用的时候，把一部分空间释放出来，以供当前运行的程序使用，这部分被称为交换(Swap)区。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;目标页数据不在内存中，且是由于换出策略保存在交换区时，可以通过 PTE 表项找到交换区中保存该数据的位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;被换出的页可能来自一些很长时间没有什么操作的程序，这些被释放的页被临时保存到 Swap 分区中，等到程序要运行时，再从 Swap 分区中恢复保存的数据到内存中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;当然不是所有从物理内存中交换出来的数据都会被放到 Swap 中，有相当一部分数据被直接交换到文件系统。例如，有的程序会打开一些文件，对文件进行读写，当需要将这些程序的内存空间交换出去时，就没有必要将文件部分的数据放到 Swap 空间中了，而可以直接对 实际FS 进行修改。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <category term="Linux" />
+        <category term="OS" />
+        <category term="kernel" />
+        <category term="SSD" />
+        <updated>2024-03-18T08:34:20.000Z</updated>
+    </entry>
+</feed>
