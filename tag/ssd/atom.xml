@@ -71,7 +71,8 @@
 
 5. 主机取CQ，检查，触发DB告知SSD完成
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;总的来说，CQ用于主机写入，CQ用于SSD写回，DB和MSI-X中断用于通知。&lt;/p&gt;
+&lt;p&gt;更一般地，可以简化为这样的模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/2024/03/18/SSD-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/NVMe2.png&#34;&gt;&lt;/p&gt;
 </content>
         <category term="SSD" />
         <category term="HUST" />
