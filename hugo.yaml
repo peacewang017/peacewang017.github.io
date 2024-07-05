@@ -1,0 +1,20 @@
+baseURL: https://example.org/
+languageCode: en-us
+title: Jason's blog
+
+# theme
+theme: ["PaperMod"]
+
+# Home-Info Mode
+params:
+  homeInfoParams:
+    Title: Hi there
+    Content: My name is Jason Luo, welcome to my blog.
+
+  socialIcons: # optional
+    - name: "github"
+      url: "https://github.com/peacewang017"
+    - name: "zhihu"
+      url: "https://zhihu.com/people/peace-wang-56"
+    - name: "bilibili"
+      url: "https://space.bilibili.com/1148166118?spm_id_from=333.337.0.0"
