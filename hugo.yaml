@@ -18,3 +18,18 @@ params:
       url: "https://zhihu.com/people/peace-wang-56"
     - name: "bilibili"
       url: "https://space.bilibili.com/1148166118?spm_id_from=333.337.0.0"
+
+menu:
+  main:
+    - identifier: archieve
+      name: Archieve
+      url: /archives/
+      weight: 10
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 20
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 30
