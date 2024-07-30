@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>NUS on Jason&#39;s blog</title>
+    <link>http://localhost:1313/tags/nus/</link>
+    <description>Recent content in NUS on Jason&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Jul 2024 00:24:40 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/nus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NUS Summer Workshop</title>
+      <link>http://localhost:1313/posts/nus-summer-workshop/</link>
+      <pubDate>Sat, 20 Jul 2024 00:24:40 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/nus-summer-workshop/</guid>
+      <description>几个月前我刚刚来过新加坡，现在又回来了，不过不同于之前的纯旅游，这次的活动有一些 workload。
+NUS summerworkshop 是 NUS SoC 每年暑假举办的活动（项目主页）, 总共时长是两个月：第一个月学生在本国内上网课，第二个月需要到 NUS 实地完成一个现学现卖的项目，我在 12 个选项中选择了与云计算有关的 cloud-computing cluster。
+1 住宿和饮食 在 NUS 的期间，学生会有 NUS 的学生卡、宿舍卡、定制的 EZ-LINK 交通卡等，走在校园里甚至有种自己也是 NUS 本科生的感觉。
+我们住在 PGPR，很标准的学生宿舍，干净整洁。美中不足的是，因为 NUS 本科生已经放假，宿舍旁的食堂没了多少选择，我常吃印度大婶卖的沙拉配果汁，或者 supersnack 里鸡排 + 薯条 + 华夫 + 柠檬水的套餐，偶尔馋冬阴功的时候，也会走路去 NUH 的食堂，或者坐公交去 Utown：
+2 课程和项目 &amp;hellip;</description>
+      <content:encoded><![CDATA[<p>几个月前我刚刚来过新加坡，现在又回来了，不过不同于之前的纯旅游，这次的活动有一些 workload。</p>
+<p>NUS summerworkshop 是 NUS SoC 每年暑假举办的活动（<a href="https://sws.comp.nus.edu.sg/">项目主页</a>）, 总共时长是两个月：第一个月学生在本国内上网课，第二个月需要到 NUS 实地完成一个现学现卖的项目，我在 12 个选项中选择了与云计算有关的 cloud-computing cluster。</p>
+<h1 id="1-住宿和饮食">1 住宿和饮食</h1>
+<p>在 NUS 的期间，学生会有 NUS 的学生卡、宿舍卡、定制的 EZ-LINK 交通卡等，走在校园里甚至有种自己也是 NUS 本科生的感觉。</p>
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p>我们住在 PGPR，很标准的学生宿舍，干净整洁。美中不足的是，因为 NUS 本科生已经放假，宿舍旁的食堂没了多少选择，我常吃印度大婶卖的沙拉配果汁，或者 supersnack 里鸡排 + 薯条 + 华夫 + 柠檬水的套餐，偶尔馋冬阴功的时候，也会走路去 NUH 的食堂，或者坐公交去 Utown：</p>
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-1.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-2.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-3.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-4.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-5.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<h1 id="2-课程和项目">2 课程和项目</h1>
+<p>&hellip;</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

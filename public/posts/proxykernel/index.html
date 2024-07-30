@@ -11,15 +11,72 @@
 $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: EXEC (Executable file) Machine: RISC-V Version: 0x1 Entry point address: 0x80000548 Start of program headers: 64 (bytes into file) Start of section headers: 130760 (bytes into file) Flags: 0x5, RVC, double-float ABI Size of this header: 64 (bytes) Size of program headers: 56 (bytes) Number of program headers: 2 Size of section headers: 64 (bytes) Number of section headers: 18 Section header string table index: 17 $ riscv64-unknown-elf-readelf -l .">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/proxykernel/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7da7716a1f2d0725f74c6ae7f8d6adafc43aabe2b366b65bfbf433448e2a2001.css" integrity="sha256-fadxah8tByX3TGrn&#43;Natr8Q6q&#43;KzZrZb&#43;/QzRI4qIAE=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
 <link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="http://localhost:1313/posts/proxykernel/">
+
+<meta name="twitter:title" content="ProxyKernel | Jason&#39;s blog" />
+<meta name="twitter:description" content="1 系统启动 1.1 内核载入 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。
+$ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: EXEC (Executable file) Machine: RISC-V Version: 0x1 Entry point address: 0x80000548 Start of program headers: 64 (bytes into file) Start of section headers: 130760 (bytes into file) Flags: 0x5, RVC, double-float ABI Size of this header: 64 (bytes) Size of program headers: 56 (bytes) Number of program headers: 2 Size of section headers: 64 (bytes) Number of section headers: 18 Section header string table index: 17 $ riscv64-unknown-elf-readelf -l ." />
+<meta property="og:title" content="ProxyKernel | Jason&#39;s blog" />
+<meta property="og:description" content="1 系统启动 1.1 内核载入 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。
+$ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: EXEC (Executable file) Machine: RISC-V Version: 0x1 Entry point address: 0x80000548 Start of program headers: 64 (bytes into file) Start of section headers: 130760 (bytes into file) Flags: 0x5, RVC, double-float ABI Size of this header: 64 (bytes) Size of program headers: 56 (bytes) Number of program headers: 2 Size of section headers: 64 (bytes) Number of section headers: 18 Section header string table index: 17 $ riscv64-unknown-elf-readelf -l ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/proxykernel/" />
+<meta property="article:section" content="posts" />
+  <meta property="article:published_time" content="2024-03-27T18:52:42&#43;08:00" />
+  <meta property="article:modified_time" content="2024-03-27T18:52:42&#43;08:00" />
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "ProxyKernel",
+      "item": "http://localhost:1313/posts/proxykernel/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ProxyKernel | Jason's blog",
+  "name": "ProxyKernel",
+  "description": "1 系统启动 1.1 内核载入 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。\n$ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2\u0026#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: EXEC (Executable file) Machine: RISC-V Version: 0x1 Entry point address: 0x80000548 Start of program headers: 64 (bytes into file) Start of section headers: 130760 (bytes into file) Flags: 0x5, RVC, double-float ABI Size of this header: 64 (bytes) Size of program headers: 56 (bytes) Number of program headers: 2 Size of section headers: 64 (bytes) Number of section headers: 18 Section header string table index: 17 $ riscv64-unknown-elf-readelf -l .",
+  "keywords": [
+    
+  ],
+  "wordCount" : "1226",
+  "inLanguage": "en",
+  "datePublished": "2024-03-27T18:52:42+08:00",
+  "dateModified": "2024-03-27T18:52:42+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/proxykernel/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jason's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 <noscript>
     <style>
         #theme-toggle,
@@ -35,54 +92,111 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
                 --entry: rgb(46, 46, 51);
                 --primary: rgb(218, 218, 219);
                 --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
+                --tertiary-bg: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
 
-            .list {
+            .list-page {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
+            .list-page:not(.dark)::-webkit-scrollbar-track {
                 background: 0 0;
             }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
+            .list-page:not(.dark)::-webkit-scrollbar-thumb {
                 border-color: var(--theme);
             }
         }
 
     </style>
 </noscript>
+
 </head>
 
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
+<body class=" type-posts kind-page layout-" id="top"><script data-no-instant>
+function switchTheme(theme) {
+  switch (theme) {
+    case 'light':
+      document.body.classList.remove('dark');
+      break;
+    case 'dark':
+      document.body.classList.add('dark');
+      break;
+    
+    default:
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
+      }
+  }
+}
 
+function isDarkTheme() {
+  return document.body.className.includes("dark");
+}
+
+function getPrefTheme() {
+  return localStorage.getItem("pref-theme");
+}
+
+function setPrefTheme(theme) {
+  switchTheme(theme)
+  localStorage.setItem("pref-theme", theme);
+}
+
+const toggleThemeCallbacks = {}
+toggleThemeCallbacks['main'] = (isDark) => {
+  
+  if (isDark) {
+    setPrefTheme('light');
+  } else {
+    setPrefTheme('dark');
+  }
+}
+
+
+
+
+window.addEventListener('toggle-theme', function() {
+  
+  const isDark = isDarkTheme()
+  for (const key in toggleThemeCallbacks) {
+    toggleThemeCallbacks[key](isDark)
+  }
+});
+
+
+function toggleThemeListener() {
+  
+  window.dispatchEvent(new CustomEvent('toggle-theme'));
+}
+
+</script>
+<script>
+  
+  (function() {
+    const defaultTheme = 'light';
+    const prefTheme = getPrefTheme();
+    const theme = prefTheme ? prefTheme : defaultTheme;
+
+    switchTheme(theme);
+  })();
 </script>
 
 <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Jason&#39;s blog (Alt + H)">Jason&#39;s blog</a>
-            <div class="logo-switches">
+            <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -96,41 +210,95 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </div>
+            </span>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives/" title="Archieve">
-                    <span>Archieve</span>
+                <a href="http://localhost:1313/archives/" title="Archieve"
+                >Archieve
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
-                    <span>Categories</span>
+                <a href="http://localhost:1313/categories/" title="Categories"
+                >Categories
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
+                <a href="http://localhost:1313/tags/" title="Tags"
+                >Tags
                 </a>
             </li>
         </ul>
     </nav>
 </header>
-<main class="main">
+<main class="main post">
 
 <article class="post-single">
   <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      ProxyKernel
-    </h1>
-    <div class="post-meta"><span title='2024-07-28 18:52:42 +0800 CST'>July 28, 2024</span>
+    <h1 class="post-title">ProxyKernel</h1>
+    <div class="post-meta"><span class="meta-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
+  <span>March 27, 2024</span></span>
 
+      
+      
+    </div>
+  </header> <div class="toc side left">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#1-%e7%b3%bb%e7%bb%9f%e5%90%af%e5%8a%a8" aria-label="1 系统启动">1 系统启动</a><ul>
+                        
+                <li>
+                    <a href="#11-%e5%86%85%e6%a0%b8%e8%bd%bd%e5%85%a5" aria-label="1.1 内核载入">1.1 内核载入</a></li>
+                <li>
+                    <a href="#12-%e5%86%85%e6%a0%b8%e5%90%af%e5%8a%a8%e4%b8%8e%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="1.2 内核启动与初始化">1.2 内核启动与初始化</a></li></ul>
+                </li>
+                <li>
+                    <a href="#2-%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86" aria-label="2 内存管理">2 内存管理</a><ul>
+                        
+                <li>
+                    <a href="#21-sv39-%e4%b8%89%e7%ba%a7%e9%a1%b5%e8%a1%a8%e6%a8%a1%e5%9e%8b" aria-label="2.1 Sv39 三级页表模型">2.1 Sv39 三级页表模型</a></li>
+                <li>
+                    <a href="#22-%e5%86%85%e5%ad%98%e5%b8%83%e5%b1%80" aria-label="2.2 内存布局">2.2 内存布局</a><ul>
+                        
+                <li>
+                    <a href="#221-%e5%86%85%e6%a0%b8" aria-label="2.2.1 内核">2.2.1 内核</a></li>
+                <li>
+                    <a href="#222-%e7%94%a8%e6%88%b7%e8%bf%9b%e7%a8%8b" aria-label="2.2.2 用户进程">2.2.2 用户进程</a></li></ul>
+                </li>
+                <li>
+                    <a href="#22-%e7%89%a9%e7%90%86%e9%a1%b5%e5%88%86%e9%85%8d" aria-label="2.2 物理页分配">2.2 物理页分配</a></li>
+                <li>
+                    <a href="#23-%e8%99%9a%e5%ae%9e%e5%9c%b0%e5%9d%80%e8%bd%ac%e6%8d%a2" aria-label="2.3 虚实地址转换">2.3 虚实地址转换</a></li>
+                <li>
+                    <a href="#24-malloc-%e5%ae%9e%e7%8e%b0" aria-label="2.4 malloc 实现">2.4 malloc 实现</a></li>
+                <li>
+                    <a href="#24-copy-on-write-%e7%9a%84%e5%ae%9e%e7%8e%b0" aria-label="2.4 Copy-On-Write 的实现">2.4 Copy-On-Write 的实现</a></li></ul>
+                </li>
+                <li>
+                    <a href="#3-%e8%bf%9b%e7%a8%8b%e7%ae%a1%e7%90%86" aria-label="3 进程管理">3 进程管理</a><ul>
+                        
+                <li>
+                    <a href="#31-%e8%bf%9b%e7%a8%8b%e7%9b%b8%e5%85%b3%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" aria-label="3.1 进程相关数据结构">3.1 进程相关数据结构</a></li>
+                <li>
+                    <a href="#32-%e8%bf%9b%e7%a8%8b%e8%b0%83%e5%ba%a6" aria-label="3.2 进程调度">3.2 进程调度</a></li>
+                <li>
+                    <a href="#33-fork-%e7%9a%84%e5%ae%9e%e7%8e%b0" aria-label="3.3 fork() 的实现">3.3 fork() 的实现</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
 </div>
-  </header> 
-  <div class="post-content"><h1 id="1-系统启动">1 系统启动<a hidden class="anchor" aria-hidden="true" href="#1-系统启动">#</a></h1>
-<h2 id="11-内核载入">1.1 内核载入<a hidden class="anchor" aria-hidden="true" href="#11-内核载入">#</a></h2>
+
+  <div class="post-content"><h1 id="1-系统启动">1 系统启动<a hidden class="anchor" aria-hidden="true" href="#1-系统启动">¶</a></h1>
+<h2 id="11-内核载入">1.1 内核载入<a hidden class="anchor" aria-hidden="true" href="#11-内核载入">¶</a></h2>
 <p>由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ riscv64-unknown-elf-readelf -h ./obj/riscv-pke
 </span></span><span style="display:flex;"><span>ELF Header:
@@ -173,8 +341,8 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
 </span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">00</span>     .text .rodata
 </span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">01</span>     .htif .data .bss
 </span></span></code></pre></div><p>ELF 的文件入口地址是 0x80000548，具有代码段(段首地址是 0x80000000，长度是 0x3564)和数据段(段首地址是 0x80004000，长度是 0x98b8)。</p>
-<p>代码段的段首地址是 0x80000000，而 spike 模拟器为程序模拟的内存也以 0x80000000 这个地址为起始地址，所以我们巧妙的避开了在内核态需要有内核页表进行 VA -&gt; PA 的问题。</p>
-<h2 id="12-内核启动">1.2 内核启动<a hidden class="anchor" aria-hidden="true" href="#12-内核启动">#</a></h2>
+<p>代码段的段首地址是 0x80000000，而 spike 模拟器为程序模拟的内存也以 0x80000000 这个地址为起始地址。</p>
+<h2 id="12-内核启动与初始化">1.2 内核启动与初始化<a hidden class="anchor" aria-hidden="true" href="#12-内核启动与初始化">¶</a></h2>
 <p>载入 spike 的内存后，内核的入口地址是 _mentry 汇编函数:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>.globl _mentry
 </span></span><span style="display:flex;"><span>_mentry:
@@ -194,103 +362,508 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
 </span></span><span style="display:flex;"><span>    call m_start
 </span></span></code></pre></div><p><strong>_mentry</strong> 为内核分配 4KB 大小的内核栈，并调用 m_start。</p>
 <p><strong>m_start</strong> 会初始化客户机-主机接口和文件接口， 将上一个状态设置为 S 态，并将“退回”到 S 态的函数指针 s_start 写到 mepc 寄存器中(90&ndash;93行)，再执行返回进入 s_start(由于上一个状态被设置为了 S 态)。</p>
-<p><strong>s_start</strong> 会初始化 Sv39 页表、process_pool、VFS 等数据结构，最后载入制定 ELF 文件后调用 <code>schedule()</code> 开始调度进程运行。</p>
-<h1 id="2-内存管理">2 内存管理<a hidden class="anchor" aria-hidden="true" href="#2-内存管理">#</a></h1>
-<h2 id="21-sv39-三级页表模型">2.1 SV39 三级页表模型<a hidden class="anchor" aria-hidden="true" href="#21-sv39-三级页表模型">#</a></h2>
-<p><img loading="lazy" src="image.png" alt=""  />
-</p>
+<p><strong>s_start</strong> 会初始化内核页表、process_pool、VFS 等数据结构，最后载入制定 ELF 文件后调用 <code>schedule()</code> 开始调度进程运行。</p>
+<h1 id="2-内存管理">2 内存管理<a hidden class="anchor" aria-hidden="true" href="#2-内存管理">¶</a></h1>
+<h2 id="21-sv39-三级页表模型">2.1 Sv39 三级页表模型<a hidden class="anchor" aria-hidden="true" href="#21-sv39-三级页表模型">¶</a></h2>
+<p><img loading="lazy" src="/posts/proxykernel/image.png" type="" alt=""  /></p>
 <!-- raw HTML omitted -->
-<p><img loading="lazy" src="image-1.png" alt=""  />
-</p>
+<p><img loading="lazy" src="/posts/proxykernel/image-1.png" type="" alt=""  /></p>
 <!-- raw HTML omitted -->
-<p><img loading="lazy" src="image-2.png" alt=""  />
-</p>
+<p><img loading="lazy" src="/posts/proxykernel/image-2.png" type="" alt=""  /></p>
 <!-- raw HTML omitted -->
-<p><img loading="lazy" src="image-3.png" alt=""  />
-</p>
+<p><img loading="lazy" src="/posts/proxykernel/image-3.png" type="" alt=""  /></p>
 <!-- raw HTML omitted -->
 <p>OS 从 SATP 的 PPN 中获得三级页表根目录的物理地址，根据 VPN[3] 找到页表二级目录地址&hellip; 找到页表后，根据 VPN[3] 找到 PPN，与 12 位 offset 一同构成 54 位 PA。</p>
-<p>除此之外，TLB 被用来加速 VA -&gt; PA 转换(需要在进程切换的时候刷新 SATP 寄存器中 ASID 的值，如果发生进程切换，则 OS 需要调用 SFENCE.VMA 来刷新 TLB)</p>
-
+<p>除此之外，TLB(快表) 被用来加速 VA -&gt; PA 转换(需要在进程切换的时候刷新 SATP 寄存器中 ASID 的值，如果发生进程切换，则 OS 需要调用 SFENCE.VMA 来刷新 TLB)</p>
+<h2 id="22-内存布局">2.2 内存布局<a hidden class="anchor" aria-hidden="true" href="#22-内存布局">¶</a></h2>
+<h3 id="221-内核">2.2.1 内核<a hidden class="anchor" aria-hidden="true" href="#221-内核">¶</a></h3>
+<p>对于内核，从 1.2 中我们知道，由于 Spike 为 PK-ELF 留出的空间(0X80000000 - 0xffffffff) 的起始地址与 PK-ELF 代码段的起始地址相同，内核页表无需做任何转换，内核态下的虚实地址一一对应(因此，PK 也支持无页表的 bare mode)。</p>
+<p>初始化后的内核页表即全局变量<code>g_kernel_pagetable</code>。</p>
+<p><img loading="lazy" src="/posts/proxykernel/image-4.png" type="" alt=""  /></p>
+<h3 id="222-用户进程">2.2.2 用户进程<a hidden class="anchor" aria-hidden="true" href="#222-用户进程">¶</a></h3>
+<p>对于用户进程，<code>load_user_program()</code>函数被用来载入用户程序:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>process <span style="color:#f92672">*</span><span style="color:#a6e22e">load_user_program</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> hartid <span style="color:#f92672">=</span> <span style="color:#a6e22e">read_tp</span>();
+</span></span><span style="display:flex;"><span>	process <span style="color:#f92672">*</span>proc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	proc <span style="color:#f92672">=</span> <span style="color:#a6e22e">alloc_process</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;Hartid %d: User application is loading.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, hartid);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	arg_buf arg_bug_msg;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 解析命令行参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">size_t</span> argc <span style="color:#f92672">=</span> <span style="color:#a6e22e">parse_args</span>(<span style="color:#f92672">&amp;</span>arg_bug_msg);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>argc)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">panic</span>(<span style="color:#e6db74">&#34;You need to specify the application program!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> user_app_argc <span style="color:#f92672">=</span> argc <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>user_app_argv;
+</span></span><span style="display:flex;"><span>	user_app_argv <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>)(arg_bug_msg.argv <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">load_bincode_from_vfs_elf</span>(proc, arg_bug_msg.argv[<span style="color:#ae81ff">0</span>], user_app_argc,
+</span></span><span style="display:flex;"><span>				  user_app_argv);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> proc;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>load_bincode_from_vfs_elf</code>会通过 VFS 读取 ELF 文件，载入一个新的 PCB 中，关于内存分配和物理页的情况，保存在<code>process_t</code>的<code>mapped_info</code>中:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">// the VM regions mapped to a user process
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> mapped_region {
+</span></span><span style="display:flex;"><span>	uint64 va; <span style="color:#75715e">// mapped virtual address
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	uint32 npages; <span style="color:#75715e">// mapping_info is unused if npages == 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	uint32 seg_type; <span style="color:#75715e">// segment type, one of the segment_types
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} mapped_region;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// points to a page that contains mapped_regions.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	mapped_region <span style="color:#f92672">*</span>mapped_info;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// next free mapped region in mapped_info
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> total_mapped_region;
+</span></span><span style="display:flex;"><span>} process;
+</span></span></code></pre></div><p>如<code>mapped_info[CODE_SEGMENT]</code>中给出了代码段的信息(这里段的大小上限被限制在了 4KB，即一页的大小)。</p>
+<h2 id="22-物理页分配">2.2 物理页分配<a hidden class="anchor" aria-hidden="true" href="#22-物理页分配">¶</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> node {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> node <span style="color:#f92672">*</span>next; <span style="color:#75715e">// 下一个物理页的起始地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} list_node;
+</span></span></code></pre></div><p>PK 中的内存以链表(逻辑上是队列)的形式串接，使用一个自旋锁来保证内存申请的原子性:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">uint32_t</span> lock;
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">spinlock_t</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">spin_lock</span>(<span style="color:#66d9ef">spinlock_t</span> <span style="color:#f92672">*</span>lock)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint32_t</span> value;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">asm</span> <span style="color:#66d9ef">volatile</span>(<span style="color:#e6db74">&#34;1: &#34;</span>
+</span></span><span style="display:flex;"><span>		     <span style="color:#e6db74">&#34;amoswap.w.aq %0, %1, %2 </span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">&#34;</span> 
+</span></span><span style="display:flex;"><span>		     <span style="color:#e6db74">&#34;bnez %0, 1b&#34;</span> 
+</span></span><span style="display:flex;"><span>		     <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;=&amp;r&#34;</span>(value) <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>		     <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;r&#34;</span>(<span style="color:#ae81ff">1</span>), <span style="color:#e6db74">&#34;m&#34;</span>(lock<span style="color:#f92672">-&gt;</span>lock) 
+</span></span><span style="display:flex;"><span>		     <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;memory&#34;</span> <span style="color:#75715e">// 告诉编译器内联汇编会修改内存
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">spin_unlock</span>(<span style="color:#66d9ef">spinlock_t</span> <span style="color:#f92672">*</span>lock)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	lock<span style="color:#f92672">-&gt;</span>lock <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>获取锁成功则 lock 被置为 0，否则将持续等待。</p>
+<h2 id="23-虚实地址转换">2.3 虚实地址转换<a hidden class="anchor" aria-hidden="true" href="#23-虚实地址转换">¶</a></h2>
+<p>Sv39 用户进程的根页表起始地址(PPN)会被记录在 SATP 寄存器中，页表本身在内存中<code>process_t</code>结构体内，<code>vmm.c</code>中提供了对页表的查询、映射、删除等操作函数。</p>
+<h2 id="24-malloc-实现">2.4 malloc 实现<a hidden class="anchor" aria-hidden="true" href="#24-malloc-实现">¶</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">// 用来记录堆空间中已经 alloc 并 map 过的 page,va-&gt;pa 的 map 关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> page_dentry {
+</span></span><span style="display:flex;"><span>	uint64 va_page;
+</span></span><span style="display:flex;"><span>	uint64 pa_page;
+</span></span><span style="display:flex;"><span>} page_dentry;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 用来记录 malloc 的块的虚拟地址起点及终点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> malloc_dentry {
+</span></span><span style="display:flex;"><span>	uint64 va_start;
+</span></span><span style="display:flex;"><span>	uint64 va_end;
+</span></span><span style="display:flex;"><span>} malloc_dentry;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 目录存储 map 过的page，需要按照虚拟地址排序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	page_dentry page_dir[MAX_HEAP_PAGES];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> num_page;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 目录存储 malloc 的区域，用虚拟地址起止表示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	malloc_dentry malloc_dir[MAX_MALLOC_IN_HEAP];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> num_malloc;
+</span></span><span style="display:flex;"><span>} process;
+</span></span></code></pre></div><p>在<code>process_t</code>中维护两个二元表，<code>page_dir</code>记录堆空间中已经 alloc 并 map 过的 page，va-&gt;pa 的 map 关系，<code>malloc_dentry</code> 记录 malloc 的块的虚拟地址起点及终点。</p>
+<h2 id="24-copy-on-write-的实现">2.4 Copy-On-Write 的实现<a hidden class="anchor" aria-hidden="true" href="#24-copy-on-write-的实现">¶</a></h2>
+<p>在 PTE 中添加 PTW_COW 标志位，在写入 C-O-W 的页时触发缺页异常并处理缺页。</p>
+<p>为了防止子进程 copy 后，父进程页面释放时子进程缺页，需要在物理页的数据结构里加入一个<code>cnt</code>，记录有多少虚拟页映射到了这块物理页。</p>
+<h1 id="3-进程管理">3 进程管理<a hidden class="anchor" aria-hidden="true" href="#3-进程管理">¶</a></h1>
+<h2 id="31-进程相关数据结构">3.1 进程相关数据结构<a hidden class="anchor" aria-hidden="true" href="#31-进程相关数据结构">¶</a></h2>
+<p>进程控制块即<code>process_t</code>数据结构:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 指向用户内核栈的指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	uint64 kstack;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 进程页表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">pagetable_t</span> pagetable;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 陷阱帧，中断返回时使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	trapframe <span style="color:#f92672">*</span>trapframe;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 进程段表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	mapped_region <span style="color:#f92672">*</span>mapped_info;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 进程段数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> total_mapped_region;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 堆空间管理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	process_heap_manager user_heap;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// PID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	uint64 pid;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// process status
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> status;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// parent process
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> <span style="color:#f92672">*</span>parent;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 链表指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> <span style="color:#f92672">*</span>queue_next;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// irq
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> tick_count;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 文件管理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	proc_file_management <span style="color:#f92672">*</span>pfiles;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// for wait()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> waiting_pid;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 目录存储map过的page(需要按照虚拟地址排序)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	page_dentry page_dir[MAX_HEAP_PAGES];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> num_page;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 目录存储malloc的区域(用虚拟地址起止表示)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	malloc_dentry malloc_dir[MAX_MALLOC_IN_HEAP];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> num_malloc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// when blocked
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> sem_index;
+</span></span><span style="display:flex;"><span>} process;
+</span></span></code></pre></div><h2 id="32-进程调度">3.2 进程调度<a hidden class="anchor" aria-hidden="true" href="#32-进程调度">¶</a></h2>
+<p>进程管理与调度的实现主要在<code>process.c</code>和<code>sched.c</code>中。</p>
+<p><code>ready_queue_head</code>和<code>blocked_queue_head</code>是两个 PCB 链表，<code>schedule()</code>会调度一个进程投入运行:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">schedule</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> hartid <span style="color:#f92672">=</span> (<span style="color:#66d9ef">int</span>)<span style="color:#a6e22e">read_tp</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 检查父进程等待的子进程是否已经 zombie，如果是，则将父进程重新投入运行（重置waiting_pid, status）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> (blocked_queue_head[hartid]) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (process <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> blocked_queue_head[hartid]; p <span style="color:#f92672">!=</span> NULL;
+</span></span><span style="display:flex;"><span>		     p <span style="color:#f92672">=</span> p<span style="color:#f92672">-&gt;</span>queue_next) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (procs[hartid][p<span style="color:#f92672">-&gt;</span>waiting_pid].status <span style="color:#f92672">==</span> ZOMBIE) {
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">// procs[hartid][p-&gt;waiting_pid].status = FREE;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				p<span style="color:#f92672">-&gt;</span>waiting_pid <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">from_blocked_to_ready</span>(p);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ready_queue_head[hartid]) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 如果没有可调度的进程，则系统会关机
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">int</span> should_shutdown <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> NPROC; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> ((procs[hartid][i].status <span style="color:#f92672">!=</span> FREE) <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>			    (procs[hartid][i].status <span style="color:#f92672">!=</span> ZOMBIE)) {
+</span></span><span style="display:flex;"><span>				should_shutdown <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;ready queue empty, but process %d is not in free/zombie state:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>				       i, procs[hartid][i].status);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (should_shutdown) {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;no more ready processes, system shutdown now.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">shutdown</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">panic</span>(<span style="color:#e6db74">&#34;Not handled: we should let system wait for unfinished processes.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	current[hartid] <span style="color:#f92672">=</span> ready_queue_head[hartid];
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">assert</span>(current[hartid]<span style="color:#f92672">-&gt;</span>status <span style="color:#f92672">==</span> READY);
+</span></span><span style="display:flex;"><span>	ready_queue_head[hartid] <span style="color:#f92672">=</span> ready_queue_head[hartid]<span style="color:#f92672">-&gt;</span>queue_next;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	current[hartid]<span style="color:#f92672">-&gt;</span>status <span style="color:#f92672">=</span> RUNNING;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;going to schedule process %d to run.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, current[hartid]<span style="color:#f92672">-&gt;</span>pid);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">switch_to</span>(current[hartid]);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="33-fork-的实现">3.3 fork() 的实现<a hidden class="anchor" aria-hidden="true" href="#33-fork-的实现">¶</a></h2>
+<p>对于<code>DATA_SEGMENT</code>，<code>fork()</code>函数申请新的物理内存，拷贝后调用<code>map_pages</code>进行虚拟地址映射；</p>
+<p>对于<code>CODE_SEGMENT</code>，<code>fork()</code>直接将新的虚拟地址映射到父进程的物理地址；</p>
+<p>对于<code>HEAP_SEGMENT</code>，<code>fork()</code>使用 C-O-W 机制。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">do_fork</span>(process <span style="color:#f92672">*</span>parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> hartid <span style="color:#f92672">=</span> <span style="color:#a6e22e">read_tp</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;Will fork a child from parent %d.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, parent<span style="color:#f92672">-&gt;</span>pid);
+</span></span><span style="display:flex;"><span>	process <span style="color:#f92672">*</span>child <span style="color:#f92672">=</span> <span style="color:#a6e22e">alloc_process</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> parent<span style="color:#f92672">-&gt;</span>total_mapped_region; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// browse parent&#39;s vm space, and copy its trapframe and data segments,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// map its code segment.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">switch</span> (parent<span style="color:#f92672">-&gt;</span>mapped_info[i].seg_type) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> CONTEXT_SEGMENT: {
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">*</span>child<span style="color:#f92672">-&gt;</span>trapframe <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>parent<span style="color:#f92672">-&gt;</span>trapframe;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> STACK_SEGMENT: {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">memcpy</span>((<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)<span style="color:#a6e22e">lookup_pa</span>(
+</span></span><span style="display:flex;"><span>				       child<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>				       child<span style="color:#f92672">-&gt;</span>mapped_info[STACK_SEGMENT].va),
+</span></span><span style="display:flex;"><span>			       (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)<span style="color:#a6e22e">lookup_pa</span>(parent<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>						 parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va),
+</span></span><span style="display:flex;"><span>			       PGSIZE);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> HEAP_SEGMENT: {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> free_block_filter[MAX_HEAP_PAGES];
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">memset</span>(free_block_filter, <span style="color:#ae81ff">0</span>, MAX_HEAP_PAGES);
+</span></span><span style="display:flex;"><span>			uint64 heap_bottom <span style="color:#f92672">=</span> parent<span style="color:#f92672">-&gt;</span>user_heap.heap_bottom;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> parent<span style="color:#f92672">-&gt;</span>user_heap.free_pages_count;
+</span></span><span style="display:flex;"><span>			     i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> (parent<span style="color:#f92672">-&gt;</span>user_heap
+</span></span><span style="display:flex;"><span>						     .free_pages_address[i] <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span>					     heap_bottom) <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>					    PGSIZE;
+</span></span><span style="display:flex;"><span>				free_block_filter[index] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// copy and map the heap blocks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">for</span> (uint64 heap_block <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				     current[hartid]<span style="color:#f92672">-&gt;</span>user_heap.heap_bottom;
+</span></span><span style="display:flex;"><span>			     heap_block <span style="color:#f92672">&lt;</span> current[hartid]<span style="color:#f92672">-&gt;</span>user_heap.heap_top;
+</span></span><span style="display:flex;"><span>			     heap_block <span style="color:#f92672">+=</span> PGSIZE) {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (free_block_filter[(heap_block <span style="color:#f92672">-</span> heap_bottom) <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>						      PGSIZE]) <span style="color:#75715e">// skip free blocks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>					<span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">// COW: just map (not cp) heap here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				uint64 child_pa <span style="color:#f92672">=</span> <span style="color:#a6e22e">lookup_pa</span>(parent<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>							    heap_block);
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">user_vm_map</span>((<span style="color:#66d9ef">pagetable_t</span>)child<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>					    heap_block, PGSIZE, child_pa,
+</span></span><span style="display:flex;"><span>					    <span style="color:#a6e22e">prot_to_type</span>(PROT_READ <span style="color:#f92672">|</span> PROT_COW,
+</span></span><span style="display:flex;"><span>							 <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[HEAP_SEGMENT].npages <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[HEAP_SEGMENT].npages;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// copy the heap manager from parent to child
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#a6e22e">memcpy</span>((<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>child<span style="color:#f92672">-&gt;</span>user_heap,
+</span></span><span style="display:flex;"><span>			       (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>parent<span style="color:#f92672">-&gt;</span>user_heap,
+</span></span><span style="display:flex;"><span>			       <span style="color:#66d9ef">sizeof</span>(parent<span style="color:#f92672">-&gt;</span>user_heap));
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> CODE_SEGMENT: {
+</span></span><span style="display:flex;"><span>			uint64 pa <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">lookup_pa</span>(parent<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>					  parent<span style="color:#f92672">-&gt;</span>mapped_info[CODE_SEGMENT].va);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">user_vm_map</span>(child<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>				    parent<span style="color:#f92672">-&gt;</span>mapped_info[CODE_SEGMENT].va,
+</span></span><span style="display:flex;"><span>				    parent<span style="color:#f92672">-&gt;</span>mapped_info[CODE_SEGMENT].npages <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>					    PGSIZE,
+</span></span><span style="display:flex;"><span>				    pa, <span style="color:#a6e22e">prot_to_type</span>(PROT_EXEC <span style="color:#f92672">|</span> PROT_READ, <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;do_fork map code segment at pa:%lx of parent to child at va:%lx.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>			       pa, parent<span style="color:#f92672">-&gt;</span>mapped_info[CODE_SEGMENT].va);
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// after mapping, register the vm region (do not delete codes below!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].va <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].npages <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[i].npages;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].seg_type <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				CODE_SEGMENT;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>total_mapped_region<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> DATA_SEGMENT: {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> parent<span style="color:#f92672">-&gt;</span>mapped_info[i].npages;
+</span></span><span style="display:flex;"><span>			     j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>				uint64 addr <span style="color:#f92672">=</span> <span style="color:#a6e22e">lookup_pa</span>(
+</span></span><span style="display:flex;"><span>					parent<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>					parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> PGSIZE);
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>newaddr <span style="color:#f92672">=</span> <span style="color:#a6e22e">alloc_page</span>();
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">memcpy</span>(newaddr, (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)addr, PGSIZE);
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">map_pages</span>(child<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>					  parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  j <span style="color:#f92672">*</span> PGSIZE,
+</span></span><span style="display:flex;"><span>					  PGSIZE, (uint64)newaddr,
+</span></span><span style="display:flex;"><span>					  <span style="color:#a6e22e">prot_to_type</span>(PROT_WRITE <span style="color:#f92672">|</span> PROT_READ,
+</span></span><span style="display:flex;"><span>						       <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// after mapping, register the vm region (do not delete codes below!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].va <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].npages <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[i].npages;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].seg_type <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				DATA_SEGMENT;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>total_mapped_region<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	child<span style="color:#f92672">-&gt;</span>status <span style="color:#f92672">=</span> READY;
+</span></span><span style="display:flex;"><span>	child<span style="color:#f92672">-&gt;</span>trapframe<span style="color:#f92672">-&gt;</span>regs.a0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>	child<span style="color:#f92672">-&gt;</span>parent <span style="color:#f92672">=</span> parent;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">insert_to_ready_queue</span>(child);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> child<span style="color:#f92672">-&gt;</span>pid;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
   </div>
 
   <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
   </footer>
+    <div class="comments-separator"></div>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Jason&#39;s blog</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+  <span>&copy; 2024 <a href="http://localhost:1313/">Jason&#39;s blog</a></span><span style="display: inline-block; margin-left: 1em;">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
+  </span>
+  <span style="display: inline-block; margin-left: 1em;">
+    Powered by
+    <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+    <a href="https://github.com/reorx/hugo-PaperModX/" rel="noopener" target="_blank">PaperModX</a>
+  </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+    <path d="M12 6H0l6-6z" />
+  </svg>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+  (function() {
+     
+    const disableThemeToggle = '' == '1';
+    if (disableThemeToggle) {
+      return;
     }
 
+    let button = document.getElementById("theme-toggle")
+    
+    button.removeEventListener('click', toggleThemeListener)
+    
+    button.addEventListener('click', toggleThemeListener)
+  })();
+</script>
+
+<script>
+  (function () {
+    let menu = document.getElementById('menu')
+    if (menu) {
+      menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+      menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+      }
+    }
+
+    const disableSmoothScroll = '' == '1';
+    const enableInstantClick = '' == '1';
+    
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || disableSmoothScroll || enableInstantClick) {
+      return;
+    }
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        var id = this.getAttribute("href").substr(1);
+        document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+          behavior: "smooth"
         });
+        if (id === "top") {
+          history.replaceState(null, null, " ");
+        } else {
+          history.pushState(null, null, `#${id}`);
+        }
+      });
     });
-
+  })();
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
+  var mybutton = document.getElementById("top-link");
+  window.onscroll = function () {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      mybutton.style.visibility = "visible";
+      mybutton.style.opacity = "1";
+    } else {
+      mybutton.style.visibility = "hidden";
+      mybutton.style.opacity = "0";
+    }
+  };
 </script>
 <script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
+  if (window.scrollListeners) {
+    
+    for (const listener of scrollListeners) {
+      window.removeEventListener('scroll', listener)
+    }
+  }
+  window.scrollListeners = []
 </script>
+
+
+
+<script src="/js/medium-zoom.min.js" data-no-instant
+></script>
+
+
+
+
+<script>
+  
+  
+  (function() {
+    const enableTocScroll = '1' == '1'
+    if (!enableTocScroll) {
+      return
+    }
+    if (!document.querySelector('.toc')) {
+      console.log('no toc found, ignore toc scroll')
+      return
+    }
+    
+
+    
+    const scrollListeners = window.scrollListeners
+    const headings = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]');
+    const activeClass = 'active';
+
+    
+    let activeHeading = headings[0];
+    getLinkByHeading(activeHeading).classList.add(activeClass);
+
+    const onScroll = () => {
+      const passedHeadings = [];
+      for (const h of headings) {
+        
+        if (getOffsetTop(h) < 5) {
+          passedHeadings.push(h)
+        } else {
+          break;
+        }
+      }
+      if (passedHeadings.length > 0) {
+        newActiveHeading = passedHeadings[passedHeadings.length - 1];
+      } else {
+        newActiveHeading = headings[0];
+      }
+      if (activeHeading != newActiveHeading) {
+        getLinkByHeading(activeHeading).classList.remove(activeClass);
+        activeHeading = newActiveHeading;
+        getLinkByHeading(activeHeading).classList.add(activeClass);
+      }
+    }
+
+    let timer = null;
+    const scrollListener = () => {
+      if (timer !== null) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(onScroll, 50)
+    }
+    window.addEventListener('scroll', scrollListener, false);
+    scrollListeners.push(scrollListener)
+
+    function getLinkByHeading(heading) {
+      const id = encodeURI(heading.getAttribute('id')).toLowerCase();
+      return document.querySelector(`.toc ul li a[href="#${id}"]`);
+    }
+
+    function getOffsetTop(heading) {
+      if (!heading.getClientRects().length) {
+        return 0;
+      }
+      let rect = heading.getBoundingClientRect();
+      return rect.top
+    }
+  })();
+  </script>
+
 </body>
 
 </html>

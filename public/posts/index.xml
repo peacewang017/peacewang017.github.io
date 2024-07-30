@@ -4,24 +4,455 @@
     <title>Posts on Jason&#39;s blog</title>
     <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Jason&#39;s blog</description>
-    <generator>Hugo -- 0.129.0</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jul 2024 18:52:42 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jul 2024 20:29:36 +0800</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NUS Summer Workshop</title>
+      <link>http://localhost:1313/posts/nus-summer-workshop/</link>
+      <pubDate>Sat, 20 Jul 2024 00:24:40 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/nus-summer-workshop/</guid>
+      <description>几个月前我刚刚来过新加坡，现在又回来了，不过不同于之前的纯旅游，这次的活动有一些 workload。
+NUS summerworkshop 是 NUS SoC 每年暑假举办的活动（项目主页）, 总共时长是两个月：第一个月学生在本国内上网课，第二个月需要到 NUS 实地完成一个现学现卖的项目，我在 12 个选项中选择了与云计算有关的 cloud-computing cluster。
+1 住宿和饮食 在 NUS 的期间，学生会有 NUS 的学生卡、宿舍卡、定制的 EZ-LINK 交通卡等，走在校园里甚至有种自己也是 NUS 本科生的感觉。
+我们住在 PGPR，很标准的学生宿舍，干净整洁。美中不足的是，因为 NUS 本科生已经放假，宿舍旁的食堂没了多少选择，我常吃印度大婶卖的沙拉配果汁，或者 supersnack 里鸡排 + 薯条 + 华夫 + 柠檬水的套餐，偶尔馋冬阴功的时候，也会走路去 NUH 的食堂，或者坐公交去 Utown：
+2 课程和项目 &amp;hellip;</description>
+      <content:encoded><![CDATA[<p>几个月前我刚刚来过新加坡，现在又回来了，不过不同于之前的纯旅游，这次的活动有一些 workload。</p>
+<p>NUS summerworkshop 是 NUS SoC 每年暑假举办的活动（<a href="https://sws.comp.nus.edu.sg/">项目主页</a>）, 总共时长是两个月：第一个月学生在本国内上网课，第二个月需要到 NUS 实地完成一个现学现卖的项目，我在 12 个选项中选择了与云计算有关的 cloud-computing cluster。</p>
+<h1 id="1-住宿和饮食">1 住宿和饮食</h1>
+<p>在 NUS 的期间，学生会有 NUS 的学生卡、宿舍卡、定制的 EZ-LINK 交通卡等，走在校园里甚至有种自己也是 NUS 本科生的感觉。</p>
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p>我们住在 PGPR，很标准的学生宿舍，干净整洁。美中不足的是，因为 NUS 本科生已经放假，宿舍旁的食堂没了多少选择，我常吃印度大婶卖的沙拉配果汁，或者 supersnack 里鸡排 + 薯条 + 华夫 + 柠檬水的套餐，偶尔馋冬阴功的时候，也会走路去 NUH 的食堂，或者坐公交去 Utown：</p>
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-1.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-2.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-3.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-4.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-5.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<h1 id="2-课程和项目">2 课程和项目</h1>
+<p>&hellip;</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>ProxyKernel</title>
       <link>http://localhost:1313/posts/proxykernel/</link>
-      <pubDate>Sun, 28 Jul 2024 18:52:42 +0800</pubDate>
+      <pubDate>Wed, 27 Mar 2024 18:52:42 +0800</pubDate>
+      
       <guid>http://localhost:1313/posts/proxykernel/</guid>
-      <description>ProxyKernel 1 系统启动 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。
+      <description>1 系统启动 1.1 内核载入 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。
 $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: EXEC (Executable file) Machine: RISC-V Version: 0x1 Entry point address: 0x80000548 Start of program headers: 64 (bytes into file) Start of section headers: 130760 (bytes into file) Flags: 0x5, RVC, double-float ABI Size of this header: 64 (bytes) Size of program headers: 56 (bytes) Number of program headers: 2 Size of section headers: 64 (bytes) Number of section headers: 18 Section header string table index: 17 $ riscv64-unknown-elf-readelf -l .</description>
+      <content:encoded><![CDATA[<h1 id="1-系统启动">1 系统启动</h1>
+<h2 id="11-内核载入">1.1 内核载入</h2>
+<p>由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ riscv64-unknown-elf-readelf -h ./obj/riscv-pke
+</span></span><span style="display:flex;"><span>ELF Header:
+</span></span><span style="display:flex;"><span>  Magic:   7f <span style="color:#ae81ff">45</span> 4c <span style="color:#ae81ff">46</span> <span style="color:#ae81ff">02</span> <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>  Class:                             ELF64
+</span></span><span style="display:flex;"><span>  Data:                              2<span style="color:#960050;background-color:#1e0010">&#39;</span>s complement, little endian
+</span></span><span style="display:flex;"><span>  Version:                           <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>current<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  OS/ABI:                            UNIX - System V
+</span></span><span style="display:flex;"><span>  ABI Version:                       <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  Type:                              EXEC <span style="color:#f92672">(</span>Executable file<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Machine:                           RISC-V
+</span></span><span style="display:flex;"><span>  Version:                           0x1
+</span></span><span style="display:flex;"><span>  Entry point address:               0x80000548
+</span></span><span style="display:flex;"><span>  Start of program headers:          <span style="color:#ae81ff">64</span> <span style="color:#f92672">(</span>bytes into file<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Start of section headers:          <span style="color:#ae81ff">130760</span> <span style="color:#f92672">(</span>bytes into file<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Flags:                             0x5, RVC, double-float ABI
+</span></span><span style="display:flex;"><span>  Size of this header:               <span style="color:#ae81ff">64</span> <span style="color:#f92672">(</span>bytes<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Size of program headers:           <span style="color:#ae81ff">56</span> <span style="color:#f92672">(</span>bytes<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Number of program headers:         <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  Size of section headers:           <span style="color:#ae81ff">64</span> <span style="color:#f92672">(</span>bytes<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Number of section headers:         <span style="color:#ae81ff">18</span>
+</span></span><span style="display:flex;"><span>  Section header string table index: <span style="color:#ae81ff">17</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ riscv64-unknown-elf-readelf -l ./obj/riscv-pke
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Elf file type is EXEC <span style="color:#f92672">(</span>Executable file<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Entry point 0x80000548
+</span></span><span style="display:flex;"><span>There are <span style="color:#ae81ff">2</span> program headers, starting at offset <span style="color:#ae81ff">64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Program Headers:
+</span></span><span style="display:flex;"><span>  Type           Offset             VirtAddr           PhysAddr
+</span></span><span style="display:flex;"><span>                 FileSiz            MemSiz              Flags  Align
+</span></span><span style="display:flex;"><span>  LOAD           0x0000000000001000 0x0000000080000000 0x0000000080000000
+</span></span><span style="display:flex;"><span>                 0x0000000000003564 0x0000000000003564  R E    0x1000
+</span></span><span style="display:flex;"><span>  LOAD           0x0000000000005000 0x0000000080004000 0x0000000080004000
+</span></span><span style="display:flex;"><span>                 0x0000000000001411 0x00000000000098b8  RW     0x1000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Section to Segment mapping:
+</span></span><span style="display:flex;"><span>  Segment Sections...
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">00</span>     .text .rodata
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">01</span>     .htif .data .bss
+</span></span></code></pre></div><p>ELF 的文件入口地址是 0x80000548，具有代码段(段首地址是 0x80000000，长度是 0x3564)和数据段(段首地址是 0x80004000，长度是 0x98b8)。</p>
+<p>代码段的段首地址是 0x80000000，而 spike 模拟器为程序模拟的内存也以 0x80000000 这个地址为起始地址。</p>
+<h2 id="12-内核启动与初始化">1.2 内核启动与初始化</h2>
+<p>载入 spike 的内存后，内核的入口地址是 _mentry 汇编函数:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>.globl _mentry
+</span></span><span style="display:flex;"><span>_mentry:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># [mscratch] = 0; mscratch points the stack bottom of machine mode computer</span>
+</span></span><span style="display:flex;"><span>    csrw mscratch, x0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># following codes allocate a 4096-byte stack for each HART, although we use only</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ONE HART in this lab.</span>
+</span></span><span style="display:flex;"><span>    la sp, stack0		<span style="color:#75715e"># stack0 is statically defined in kernel/machine/minit.c </span>
+</span></span><span style="display:flex;"><span>    li a3, 4096			<span style="color:#75715e"># 4096-byte stack</span>
+</span></span><span style="display:flex;"><span>    csrr a4, mhartid	<span style="color:#75715e"># [mhartid] = core ID</span>
+</span></span><span style="display:flex;"><span>    addi a4, a4, <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    mul a3, a3, a4
+</span></span><span style="display:flex;"><span>    add sp, sp, a3		<span style="color:#75715e"># re-arrange the stack points so that they don&#39;t overlap</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># jump to mstart(), i.e., machine state start function in kernel/machine/minit.c</span>
+</span></span><span style="display:flex;"><span>    call m_start
+</span></span></code></pre></div><p><strong>_mentry</strong> 为内核分配 4KB 大小的内核栈，并调用 m_start。</p>
+<p><strong>m_start</strong> 会初始化客户机-主机接口和文件接口， 将上一个状态设置为 S 态，并将“退回”到 S 态的函数指针 s_start 写到 mepc 寄存器中(90&ndash;93行)，再执行返回进入 s_start(由于上一个状态被设置为了 S 态)。</p>
+<p><strong>s_start</strong> 会初始化内核页表、process_pool、VFS 等数据结构，最后载入制定 ELF 文件后调用 <code>schedule()</code> 开始调度进程运行。</p>
+<h1 id="2-内存管理">2 内存管理</h1>
+<h2 id="21-sv39-三级页表模型">2.1 Sv39 三级页表模型</h2>
+<p><img loading="lazy" src="/posts/proxykernel/image.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/proxykernel/image-1.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/proxykernel/image-2.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/proxykernel/image-3.png" type="" alt=""  /></p>
+<!-- raw HTML omitted -->
+<p>OS 从 SATP 的 PPN 中获得三级页表根目录的物理地址，根据 VPN[3] 找到页表二级目录地址&hellip; 找到页表后，根据 VPN[3] 找到 PPN，与 12 位 offset 一同构成 54 位 PA。</p>
+<p>除此之外，TLB(快表) 被用来加速 VA -&gt; PA 转换(需要在进程切换的时候刷新 SATP 寄存器中 ASID 的值，如果发生进程切换，则 OS 需要调用 SFENCE.VMA 来刷新 TLB)</p>
+<h2 id="22-内存布局">2.2 内存布局</h2>
+<h3 id="221-内核">2.2.1 内核</h3>
+<p>对于内核，从 1.2 中我们知道，由于 Spike 为 PK-ELF 留出的空间(0X80000000 - 0xffffffff) 的起始地址与 PK-ELF 代码段的起始地址相同，内核页表无需做任何转换，内核态下的虚实地址一一对应(因此，PK 也支持无页表的 bare mode)。</p>
+<p>初始化后的内核页表即全局变量<code>g_kernel_pagetable</code>。</p>
+<p><img loading="lazy" src="/posts/proxykernel/image-4.png" type="" alt=""  /></p>
+<h3 id="222-用户进程">2.2.2 用户进程</h3>
+<p>对于用户进程，<code>load_user_program()</code>函数被用来载入用户程序:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>process <span style="color:#f92672">*</span><span style="color:#a6e22e">load_user_program</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> hartid <span style="color:#f92672">=</span> <span style="color:#a6e22e">read_tp</span>();
+</span></span><span style="display:flex;"><span>	process <span style="color:#f92672">*</span>proc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	proc <span style="color:#f92672">=</span> <span style="color:#a6e22e">alloc_process</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;Hartid %d: User application is loading.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, hartid);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	arg_buf arg_bug_msg;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 解析命令行参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">size_t</span> argc <span style="color:#f92672">=</span> <span style="color:#a6e22e">parse_args</span>(<span style="color:#f92672">&amp;</span>arg_bug_msg);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>argc)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">panic</span>(<span style="color:#e6db74">&#34;You need to specify the application program!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> user_app_argc <span style="color:#f92672">=</span> argc <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>user_app_argv;
+</span></span><span style="display:flex;"><span>	user_app_argv <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>)(arg_bug_msg.argv <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">load_bincode_from_vfs_elf</span>(proc, arg_bug_msg.argv[<span style="color:#ae81ff">0</span>], user_app_argc,
+</span></span><span style="display:flex;"><span>				  user_app_argv);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> proc;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>load_bincode_from_vfs_elf</code>会通过 VFS 读取 ELF 文件，载入一个新的 PCB 中，关于内存分配和物理页的情况，保存在<code>process_t</code>的<code>mapped_info</code>中:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">// the VM regions mapped to a user process
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> mapped_region {
+</span></span><span style="display:flex;"><span>	uint64 va; <span style="color:#75715e">// mapped virtual address
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	uint32 npages; <span style="color:#75715e">// mapping_info is unused if npages == 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	uint32 seg_type; <span style="color:#75715e">// segment type, one of the segment_types
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} mapped_region;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// points to a page that contains mapped_regions.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	mapped_region <span style="color:#f92672">*</span>mapped_info;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// next free mapped region in mapped_info
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> total_mapped_region;
+</span></span><span style="display:flex;"><span>} process;
+</span></span></code></pre></div><p>如<code>mapped_info[CODE_SEGMENT]</code>中给出了代码段的信息(这里段的大小上限被限制在了 4KB，即一页的大小)。</p>
+<h2 id="22-物理页分配">2.2 物理页分配</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> node {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> node <span style="color:#f92672">*</span>next; <span style="color:#75715e">// 下一个物理页的起始地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} list_node;
+</span></span></code></pre></div><p>PK 中的内存以链表(逻辑上是队列)的形式串接，使用一个自旋锁来保证内存申请的原子性:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">uint32_t</span> lock;
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">spinlock_t</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">spin_lock</span>(<span style="color:#66d9ef">spinlock_t</span> <span style="color:#f92672">*</span>lock)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint32_t</span> value;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">asm</span> <span style="color:#66d9ef">volatile</span>(<span style="color:#e6db74">&#34;1: &#34;</span>
+</span></span><span style="display:flex;"><span>		     <span style="color:#e6db74">&#34;amoswap.w.aq %0, %1, %2 </span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">&#34;</span> 
+</span></span><span style="display:flex;"><span>		     <span style="color:#e6db74">&#34;bnez %0, 1b&#34;</span> 
+</span></span><span style="display:flex;"><span>		     <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;=&amp;r&#34;</span>(value) <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>		     <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;r&#34;</span>(<span style="color:#ae81ff">1</span>), <span style="color:#e6db74">&#34;m&#34;</span>(lock<span style="color:#f92672">-&gt;</span>lock) 
+</span></span><span style="display:flex;"><span>		     <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;memory&#34;</span> <span style="color:#75715e">// 告诉编译器内联汇编会修改内存
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">spin_unlock</span>(<span style="color:#66d9ef">spinlock_t</span> <span style="color:#f92672">*</span>lock)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	lock<span style="color:#f92672">-&gt;</span>lock <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>获取锁成功则 lock 被置为 0，否则将持续等待。</p>
+<h2 id="23-虚实地址转换">2.3 虚实地址转换</h2>
+<p>Sv39 用户进程的根页表起始地址(PPN)会被记录在 SATP 寄存器中，页表本身在内存中<code>process_t</code>结构体内，<code>vmm.c</code>中提供了对页表的查询、映射、删除等操作函数。</p>
+<h2 id="24-malloc-实现">2.4 malloc 实现</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">// 用来记录堆空间中已经 alloc 并 map 过的 page,va-&gt;pa 的 map 关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> page_dentry {
+</span></span><span style="display:flex;"><span>	uint64 va_page;
+</span></span><span style="display:flex;"><span>	uint64 pa_page;
+</span></span><span style="display:flex;"><span>} page_dentry;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 用来记录 malloc 的块的虚拟地址起点及终点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> malloc_dentry {
+</span></span><span style="display:flex;"><span>	uint64 va_start;
+</span></span><span style="display:flex;"><span>	uint64 va_end;
+</span></span><span style="display:flex;"><span>} malloc_dentry;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 目录存储 map 过的page，需要按照虚拟地址排序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	page_dentry page_dir[MAX_HEAP_PAGES];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> num_page;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 目录存储 malloc 的区域，用虚拟地址起止表示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	malloc_dentry malloc_dir[MAX_MALLOC_IN_HEAP];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> num_malloc;
+</span></span><span style="display:flex;"><span>} process;
+</span></span></code></pre></div><p>在<code>process_t</code>中维护两个二元表，<code>page_dir</code>记录堆空间中已经 alloc 并 map 过的 page，va-&gt;pa 的 map 关系，<code>malloc_dentry</code> 记录 malloc 的块的虚拟地址起点及终点。</p>
+<h2 id="24-copy-on-write-的实现">2.4 Copy-On-Write 的实现</h2>
+<p>在 PTE 中添加 PTW_COW 标志位，在写入 C-O-W 的页时触发缺页异常并处理缺页。</p>
+<p>为了防止子进程 copy 后，父进程页面释放时子进程缺页，需要在物理页的数据结构里加入一个<code>cnt</code>，记录有多少虚拟页映射到了这块物理页。</p>
+<h1 id="3-进程管理">3 进程管理</h1>
+<h2 id="31-进程相关数据结构">3.1 进程相关数据结构</h2>
+<p>进程控制块即<code>process_t</code>数据结构:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 指向用户内核栈的指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	uint64 kstack;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 进程页表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">pagetable_t</span> pagetable;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 陷阱帧，中断返回时使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	trapframe <span style="color:#f92672">*</span>trapframe;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 进程段表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	mapped_region <span style="color:#f92672">*</span>mapped_info;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 进程段数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> total_mapped_region;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 堆空间管理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	process_heap_manager user_heap;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// PID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	uint64 pid;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// process status
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> status;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// parent process
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> <span style="color:#f92672">*</span>parent;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 链表指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">process_t</span> <span style="color:#f92672">*</span>queue_next;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// irq
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> tick_count;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 文件管理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	proc_file_management <span style="color:#f92672">*</span>pfiles;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// for wait()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> waiting_pid;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 目录存储map过的page(需要按照虚拟地址排序)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	page_dentry page_dir[MAX_HEAP_PAGES];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> num_page;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 目录存储malloc的区域(用虚拟地址起止表示)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	malloc_dentry malloc_dir[MAX_MALLOC_IN_HEAP];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> num_malloc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// when blocked
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> sem_index;
+</span></span><span style="display:flex;"><span>} process;
+</span></span></code></pre></div><h2 id="32-进程调度">3.2 进程调度</h2>
+<p>进程管理与调度的实现主要在<code>process.c</code>和<code>sched.c</code>中。</p>
+<p><code>ready_queue_head</code>和<code>blocked_queue_head</code>是两个 PCB 链表，<code>schedule()</code>会调度一个进程投入运行:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">schedule</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> hartid <span style="color:#f92672">=</span> (<span style="color:#66d9ef">int</span>)<span style="color:#a6e22e">read_tp</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 检查父进程等待的子进程是否已经 zombie，如果是，则将父进程重新投入运行（重置waiting_pid, status）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> (blocked_queue_head[hartid]) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (process <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> blocked_queue_head[hartid]; p <span style="color:#f92672">!=</span> NULL;
+</span></span><span style="display:flex;"><span>		     p <span style="color:#f92672">=</span> p<span style="color:#f92672">-&gt;</span>queue_next) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (procs[hartid][p<span style="color:#f92672">-&gt;</span>waiting_pid].status <span style="color:#f92672">==</span> ZOMBIE) {
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">// procs[hartid][p-&gt;waiting_pid].status = FREE;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				p<span style="color:#f92672">-&gt;</span>waiting_pid <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">from_blocked_to_ready</span>(p);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ready_queue_head[hartid]) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 如果没有可调度的进程，则系统会关机
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">int</span> should_shutdown <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> NPROC; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> ((procs[hartid][i].status <span style="color:#f92672">!=</span> FREE) <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>			    (procs[hartid][i].status <span style="color:#f92672">!=</span> ZOMBIE)) {
+</span></span><span style="display:flex;"><span>				should_shutdown <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;ready queue empty, but process %d is not in free/zombie state:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>				       i, procs[hartid][i].status);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (should_shutdown) {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;no more ready processes, system shutdown now.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">shutdown</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">panic</span>(<span style="color:#e6db74">&#34;Not handled: we should let system wait for unfinished processes.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	current[hartid] <span style="color:#f92672">=</span> ready_queue_head[hartid];
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">assert</span>(current[hartid]<span style="color:#f92672">-&gt;</span>status <span style="color:#f92672">==</span> READY);
+</span></span><span style="display:flex;"><span>	ready_queue_head[hartid] <span style="color:#f92672">=</span> ready_queue_head[hartid]<span style="color:#f92672">-&gt;</span>queue_next;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	current[hartid]<span style="color:#f92672">-&gt;</span>status <span style="color:#f92672">=</span> RUNNING;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;going to schedule process %d to run.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, current[hartid]<span style="color:#f92672">-&gt;</span>pid);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">switch_to</span>(current[hartid]);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="33-fork-的实现">3.3 fork() 的实现</h2>
+<p>对于<code>DATA_SEGMENT</code>，<code>fork()</code>函数申请新的物理内存，拷贝后调用<code>map_pages</code>进行虚拟地址映射；</p>
+<p>对于<code>CODE_SEGMENT</code>，<code>fork()</code>直接将新的虚拟地址映射到父进程的物理地址；</p>
+<p>对于<code>HEAP_SEGMENT</code>，<code>fork()</code>使用 C-O-W 机制。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">do_fork</span>(process <span style="color:#f92672">*</span>parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> hartid <span style="color:#f92672">=</span> <span style="color:#a6e22e">read_tp</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;Will fork a child from parent %d.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, parent<span style="color:#f92672">-&gt;</span>pid);
+</span></span><span style="display:flex;"><span>	process <span style="color:#f92672">*</span>child <span style="color:#f92672">=</span> <span style="color:#a6e22e">alloc_process</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> parent<span style="color:#f92672">-&gt;</span>total_mapped_region; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// browse parent&#39;s vm space, and copy its trapframe and data segments,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// map its code segment.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">switch</span> (parent<span style="color:#f92672">-&gt;</span>mapped_info[i].seg_type) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> CONTEXT_SEGMENT: {
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">*</span>child<span style="color:#f92672">-&gt;</span>trapframe <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>parent<span style="color:#f92672">-&gt;</span>trapframe;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> STACK_SEGMENT: {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">memcpy</span>((<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)<span style="color:#a6e22e">lookup_pa</span>(
+</span></span><span style="display:flex;"><span>				       child<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>				       child<span style="color:#f92672">-&gt;</span>mapped_info[STACK_SEGMENT].va),
+</span></span><span style="display:flex;"><span>			       (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)<span style="color:#a6e22e">lookup_pa</span>(parent<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>						 parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va),
+</span></span><span style="display:flex;"><span>			       PGSIZE);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> HEAP_SEGMENT: {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> free_block_filter[MAX_HEAP_PAGES];
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">memset</span>(free_block_filter, <span style="color:#ae81ff">0</span>, MAX_HEAP_PAGES);
+</span></span><span style="display:flex;"><span>			uint64 heap_bottom <span style="color:#f92672">=</span> parent<span style="color:#f92672">-&gt;</span>user_heap.heap_bottom;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> parent<span style="color:#f92672">-&gt;</span>user_heap.free_pages_count;
+</span></span><span style="display:flex;"><span>			     i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> (parent<span style="color:#f92672">-&gt;</span>user_heap
+</span></span><span style="display:flex;"><span>						     .free_pages_address[i] <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span>					     heap_bottom) <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>					    PGSIZE;
+</span></span><span style="display:flex;"><span>				free_block_filter[index] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// copy and map the heap blocks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">for</span> (uint64 heap_block <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				     current[hartid]<span style="color:#f92672">-&gt;</span>user_heap.heap_bottom;
+</span></span><span style="display:flex;"><span>			     heap_block <span style="color:#f92672">&lt;</span> current[hartid]<span style="color:#f92672">-&gt;</span>user_heap.heap_top;
+</span></span><span style="display:flex;"><span>			     heap_block <span style="color:#f92672">+=</span> PGSIZE) {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (free_block_filter[(heap_block <span style="color:#f92672">-</span> heap_bottom) <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>						      PGSIZE]) <span style="color:#75715e">// skip free blocks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>					<span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">// COW: just map (not cp) heap here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				uint64 child_pa <span style="color:#f92672">=</span> <span style="color:#a6e22e">lookup_pa</span>(parent<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>							    heap_block);
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">user_vm_map</span>((<span style="color:#66d9ef">pagetable_t</span>)child<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>					    heap_block, PGSIZE, child_pa,
+</span></span><span style="display:flex;"><span>					    <span style="color:#a6e22e">prot_to_type</span>(PROT_READ <span style="color:#f92672">|</span> PROT_COW,
+</span></span><span style="display:flex;"><span>							 <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[HEAP_SEGMENT].npages <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[HEAP_SEGMENT].npages;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// copy the heap manager from parent to child
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#a6e22e">memcpy</span>((<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>child<span style="color:#f92672">-&gt;</span>user_heap,
+</span></span><span style="display:flex;"><span>			       (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>parent<span style="color:#f92672">-&gt;</span>user_heap,
+</span></span><span style="display:flex;"><span>			       <span style="color:#66d9ef">sizeof</span>(parent<span style="color:#f92672">-&gt;</span>user_heap));
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> CODE_SEGMENT: {
+</span></span><span style="display:flex;"><span>			uint64 pa <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">lookup_pa</span>(parent<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>					  parent<span style="color:#f92672">-&gt;</span>mapped_info[CODE_SEGMENT].va);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">user_vm_map</span>(child<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>				    parent<span style="color:#f92672">-&gt;</span>mapped_info[CODE_SEGMENT].va,
+</span></span><span style="display:flex;"><span>				    parent<span style="color:#f92672">-&gt;</span>mapped_info[CODE_SEGMENT].npages <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>					    PGSIZE,
+</span></span><span style="display:flex;"><span>				    pa, <span style="color:#a6e22e">prot_to_type</span>(PROT_EXEC <span style="color:#f92672">|</span> PROT_READ, <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">sprint</span>(<span style="color:#e6db74">&#34;do_fork map code segment at pa:%lx of parent to child at va:%lx.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>			       pa, parent<span style="color:#f92672">-&gt;</span>mapped_info[CODE_SEGMENT].va);
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// after mapping, register the vm region (do not delete codes below!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].va <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].npages <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[i].npages;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].seg_type <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				CODE_SEGMENT;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>total_mapped_region<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> DATA_SEGMENT: {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> parent<span style="color:#f92672">-&gt;</span>mapped_info[i].npages;
+</span></span><span style="display:flex;"><span>			     j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>				uint64 addr <span style="color:#f92672">=</span> <span style="color:#a6e22e">lookup_pa</span>(
+</span></span><span style="display:flex;"><span>					parent<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>					parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> PGSIZE);
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>newaddr <span style="color:#f92672">=</span> <span style="color:#a6e22e">alloc_page</span>();
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">memcpy</span>(newaddr, (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)addr, PGSIZE);
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">map_pages</span>(child<span style="color:#f92672">-&gt;</span>pagetable,
+</span></span><span style="display:flex;"><span>					  parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  j <span style="color:#f92672">*</span> PGSIZE,
+</span></span><span style="display:flex;"><span>					  PGSIZE, (uint64)newaddr,
+</span></span><span style="display:flex;"><span>					  <span style="color:#a6e22e">prot_to_type</span>(PROT_WRITE <span style="color:#f92672">|</span> PROT_READ,
+</span></span><span style="display:flex;"><span>						       <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// after mapping, register the vm region (do not delete codes below!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].va <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[i].va;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].npages <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				parent<span style="color:#f92672">-&gt;</span>mapped_info[i].npages;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>mapped_info[child<span style="color:#f92672">-&gt;</span>total_mapped_region].seg_type <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>				DATA_SEGMENT;
+</span></span><span style="display:flex;"><span>			child<span style="color:#f92672">-&gt;</span>total_mapped_region<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	child<span style="color:#f92672">-&gt;</span>status <span style="color:#f92672">=</span> READY;
+</span></span><span style="display:flex;"><span>	child<span style="color:#f92672">-&gt;</span>trapframe<span style="color:#f92672">-&gt;</span>regs.a0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>	child<span style="color:#f92672">-&gt;</span>parent <span style="color:#f92672">=</span> parent;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">insert_to_ready_queue</span>(child);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> child<span style="color:#f92672">-&gt;</span>pid;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>]]></content:encoded>
     </item>
+    
     <item>
       <title>My First Post</title>
       <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Fri, 05 Jul 2024 23:00:39 +0800</pubDate>
+      <pubDate>Sun, 18 Feb 2024 23:00:39 +0800</pubDate>
+      
       <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>hugo 上的第一篇博客 Hello world！</description>
+      <description>这是 hugo 上的第一篇博客，Hello world！</description>
+      <content:encoded><![CDATA[<p>这是 hugo 上的第一篇博客，Hello world！</p>
+]]></content:encoded>
     </item>
+    
   </channel>
 </rss>

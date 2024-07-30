@@ -3,10 +3,14 @@ languageCode: en-us
 title: Jason's blog
 
 # theme
-theme: ["PaperMod"]
+theme: ["PaperModX"]
 
 # Home-Info Mode
 params:
+  showtoc: true
+  tocopen: true
+  TocSide: 'left'
+
   homeInfoParams:
     Title: Hi there
     Content: My name is Jason Luo, welcome to my blog.
