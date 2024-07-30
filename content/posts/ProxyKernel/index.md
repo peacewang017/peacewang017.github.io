@@ -4,9 +4,9 @@ date = 2024-03-27T18:52:42+08:00
 draft = false
 +++
 
-# 1 系统启动
+## 1 系统启动
 
-## 1.1 内核的载入
+### 1.1 内核的载入
 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。
 ```shell
 $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke
@@ -54,25 +54,25 @@ ELF 的文件入口地址是 0x80000548，具有代码段(段首地址是 0x8000
 
 代码段的段首地址是 0x80000000，而 spike 模拟器为程序模拟的内存也以 0x80000000 这个地址为起始地址。
 
-## 1.2 内核的启动与初始化
+### 1.2 内核的启动与初始化
 载入 spike 的内存后，内核的入口地址是 _mentry 汇编函数:
 
 ```shell
 .globl _mentry
 _mentry:
-    # [mscratch] = 0; mscratch points the stack bottom of machine mode computer
+    ## [mscratch] = 0; mscratch points the stack bottom of machine mode computer
     csrw mscratch, x0
 
-    # following codes allocate a 4096-byte stack for each HART, although we use only
-    # ONE HART in this lab.
-    la sp, stack0		# stack0 is statically defined in kernel/machine/minit.c 
-    li a3, 4096			# 4096-byte stack
-    csrr a4, mhartid	# [mhartid] = core ID
+    ## following codes allocate a 4096-byte stack for each HART, although we use only
+    ## ONE HART in this lab.
+    la sp, stack0		## stack0 is statically defined in kernel/machine/minit.c 
+    li a3, 4096			## 4096-byte stack
+    csrr a4, mhartid	## [mhartid] = core ID
     addi a4, a4, 1
     mul a3, a3, a4
-    add sp, sp, a3		# re-arrange the stack points so that they don't overlap
+    add sp, sp, a3		## re-arrange the stack points so that they don't overlap
 
-    # jump to mstart(), i.e., machine state start function in kernel/machine/minit.c
+    ## jump to mstart(), i.e., machine state start function in kernel/machine/minit.c
     call m_start
 ```
 
@@ -82,9 +82,9 @@ _mentry:
 
 **s_start** 会初始化内核页表、process_pool、VFS 等数据结构，最后载入制定 ELF 文件后调用 `schedule()` 开始调度进程运行。
 
-# 2 内存管理
+## 2 内存管理
 
-## 2.1 Sv39 三级页表模型
+### 2.1 Sv39 三级页表模型
 ![](image.png)
 <p style="text-align: center;"><em>虚拟地址格式</em></p>
 
@@ -101,16 +101,16 @@ OS 从 SATP 的 PPN 中获得三级页表根目录的物理地址，根据 VPN[3
 
 除此之外，TLB(快表) 被用来加速 VA -> PA 转换(需要在进程切换的时候刷新 SATP 寄存器中 ASID 的值，如果发生进程切换，则 OS 需要调用 SFENCE.VMA 来刷新 TLB)
 
-## 2.2 内存布局
+### 2.2 内存布局
 
-### 2.2.1 内核
+#### 2.2.1 内核
 对于内核，从 1.2 中我们知道，由于 Spike 为 PK-ELF 留出的空间(0X80000000 - 0xffffffff) 的起始地址与 PK-ELF 代码段的起始地址相同，内核页表无需做任何转换，内核态下的虚实地址一一对应(因此，PK 也支持无页表的 bare mode)。
 
 初始化后的内核页表即全局变量`g_kernel_pagetable`。
 
 ![](image-4.png)
 
-### 2.2.2 用户进程
+#### 2.2.2 用户进程
 对于用户进程，`load_user_program()`函数被用来载入用户程序:
 
 ```C
@@ -158,7 +158,7 @@ typedef struct process_t {
 
 如`mapped_info[CODE_SEGMENT]`中给出了代码段的信息(这里段的大小上限被限制在了 4KB，即一页的大小)。
 
-## 2.2 物理页分配
+### 2.2 物理页分配
 ```C
 typedef struct node {
 	struct node *next; // 下一个物理页的起始地址
@@ -192,10 +192,10 @@ static inline void spin_unlock(spinlock_t *lock)
 
 获取锁成功则 lock 被置为 0，否则将持续等待。
 
-## 2.3 虚实地址转换
+### 2.3 虚实地址转换
 Sv39 用户进程的根页表起始地址(PPN)会被记录在 SATP 寄存器中，页表本身在内存中`process_t`结构体内，`vmm.c`中提供了对页表的查询、映射、删除等操作函数。
 
-## 2.4 malloc 实现
+### 2.4 malloc 实现
 ```C
 // 用来记录堆空间中已经 alloc 并 map 过的 page,va->pa 的 map 关系
 typedef struct page_dentry {
@@ -221,13 +221,13 @@ typedef struct process_t {
 
 在`process_t`中维护两个二元表，`page_dir`记录堆空间中已经 alloc 并 map 过的 page，va->pa 的 map 关系，`malloc_dentry` 记录 malloc 的块的虚拟地址起点及终点。
 
-## 2.4 Copy-On-Write 的实现
+### 2.4 Copy-On-Write 的实现
 在 PTE 中添加 PTW_COW 标志位，在写入 C-O-W 的页时触发缺页异常并处理缺页。
 
 为了防止子进程 copy 后，父进程页面释放时子进程缺页，需要在物理页的数据结构里加入一个`cnt`，记录有多少虚拟页映射到了这块物理页。
 
-# 3 进程管理
-## 3.1 进程相关数据结构
+## 3 进程管理
+### 3.1 进程相关数据结构
 进程控制块即`process_t`数据结构:
 
 ```C
@@ -277,7 +277,7 @@ typedef struct process_t {
 } process;
 ```
 
-## 3.2 进程调度
+### 3.2 进程调度
 进程管理与调度的实现主要在`process.c`和`sched.c`中。
 
 `ready_queue_head`和`blocked_queue_head`是两个 PCB 链表，`schedule()`会依据这两个链表调度一个进程投入运行:
@@ -328,7 +328,7 @@ void schedule()
 }
 ```
 
-## 3.3 fork() 的实现
+### 3.3 fork() 的实现
 对于`DATA_SEGMENT`，`fork()`函数申请新的物理内存，拷贝后调用`map_pages`进行虚拟地址映射；
 
 对于`CODE_SEGMENT`，`fork()`直接将新的虚拟地址映射到父进程的物理地址；
@@ -457,7 +457,7 @@ int do_fork(process *parent)
 }
 ```
 
-## 3.4 中断的实现
+### 3.4 中断的实现
 ProxyKernel 中，所有的系统调用都是`do_user_call`，这是一个内联汇编函数，调用了机器指令`ecall`。在调用之前，所有的参数都已经放在了(`a0` - `a7`)这些寄存器中，这一步无需我们实现，这是寄存器对函数传参的默认处理方式。
 
 `ecall` 指令的执行将根据 `a0` 寄存器中的值获得系统调用号，并使 RISC-V 转到 S 模式(因为启动时将所有的中断、异常、系统调用都代理给了 S 模式)的 trap 处理入口执行(在kernel/strap_vector.S 文件中定义)。
@@ -492,11 +492,11 @@ long do_syscall(long a0, long a1, long a2, long a3, long a4, long a5, long a6,
 }
 ```
 
-# 4 文件系统
-## 4.1 文件结构
+## 4 文件系统
+### 4.1 文件结构
 在`fs_init`中，hostfs 被挂载到 / 下，RFS 被挂载到 /RAMDISK0 下
 
-## 4.2 RFS 和 hostfs
+### 4.2 RFS 和 hostfs
 RFS 具有 1*superblock, 10*disk inodes, 1*bitmap, 1*free blocks。
 ```C
 /*
@@ -513,8 +513,8 @@ RFS 具有 1*superblock, 10*disk inodes, 1*bitmap, 1*free blocks。
  */
 ```
 
-## 4.3 VFS
-### 4.3.1 数据结构
+### 4.3 VFS
+#### 4.3.1 数据结构
 **接口**: VFS 通过函数指针提供向具体文件系统的接口，对于不同的文件系统(RFS, hostfs)，只需要如下赋值:
 
 ```C
@@ -581,12 +581,12 @@ struct dentry {
 };
 ```
 
-### 4.3.2 哈系缓存
+#### 4.3.2 哈系缓存
 VFS 通过哈希链表的形式实现了对 dentry 与 vinode 两种结构的缓存和快速索引，它们都采用 util/hash_table.h 中定义的通用哈希链表类型(hash_table)实现，并提供各自的 key 类型、哈希函数以及 key 的等值判断函数。在 kernel/vfs.c 中能找到这两个哈希链表的定义。
 
 dentry 的哈希缓存是 key = <struct dentry *parent, char *name>, val = struct dentry*，即通过其父dentry 指针与 dentry 名称进行索引；如果如果发生冲突，则将所有冲突项依次进行比较。
 
-### 4.3.3 路径查询
+#### 4.3.3 路径查询
 通过`lookup_final_dentry`进行查询，如果(通过 token 查找到)已经存在于 VFS 目录树中，则直接返回 dentry，否则需要访问具体文件系统。
 
 搜索路径的过程中遇到的不在 VFS 目录树中的节点，会被“按需”从磁盘中读出，并被加入到VFS目录树中。
