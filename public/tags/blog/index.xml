@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Blog on Jason&#39;s blog</title>
-    <link>https://peacewang017.github.io/tags/blog/</link>
+    <link>http://localhost:1313/tags/blog/</link>
     <description>Recent content in Blog on Jason&#39;s blog</description>
-    <generator>Hugo -- 0.128.2</generator>
+    <generator>Hugo -- 0.129.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Jul 2024 23:00:39 +0800</lastBuildDate>
-    <atom:link href="https://peacewang017.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My First Post</title>
-      <link>https://peacewang017.github.io/posts/my-first-post/</link>
+      <link>http://localhost:1313/posts/my-first-post/</link>
       <pubDate>Fri, 05 Jul 2024 23:00:39 +0800</pubDate>
-      <guid>https://peacewang017.github.io/posts/my-first-post/</guid>
+      <guid>http://localhost:1313/posts/my-first-post/</guid>
       <description>hugo 上的第一篇博客 Hello world！</description>
     </item>
   </channel>

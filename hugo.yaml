@@ -25,7 +25,7 @@ menu:
       name: Archieve
       url: /archives/
       weight: 10
-    - identifier: categories
+    - identifier: category
       name: Categories
       url: /categories/
       weight: 20

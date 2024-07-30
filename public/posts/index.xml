@@ -2,17 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Jason&#39;s blog</title>
-    <link>https://peacewang017.github.io/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Jason&#39;s blog</description>
-    <generator>Hugo -- 0.128.2</generator>
+    <generator>Hugo -- 0.129.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Jul 2024 23:00:39 +0800</lastBuildDate>
-    <atom:link href="https://peacewang017.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Jul 2024 18:52:42 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ProxyKernel</title>
+      <link>http://localhost:1313/posts/proxykernel/</link>
+      <pubDate>Sun, 28 Jul 2024 18:52:42 +0800</pubDate>
+      <guid>http://localhost:1313/posts/proxykernel/</guid>
+      <description>ProxyKernel 1 系统启动 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。
+$ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: EXEC (Executable file) Machine: RISC-V Version: 0x1 Entry point address: 0x80000548 Start of program headers: 64 (bytes into file) Start of section headers: 130760 (bytes into file) Flags: 0x5, RVC, double-float ABI Size of this header: 64 (bytes) Size of program headers: 56 (bytes) Number of program headers: 2 Size of section headers: 64 (bytes) Number of section headers: 18 Section header string table index: 17 $ riscv64-unknown-elf-readelf -l .</description>
+    </item>
     <item>
       <title>My First Post</title>
-      <link>https://peacewang017.github.io/posts/my-first-post/</link>
+      <link>http://localhost:1313/posts/my-first-post/</link>
       <pubDate>Fri, 05 Jul 2024 23:00:39 +0800</pubDate>
-      <guid>https://peacewang017.github.io/posts/my-first-post/</guid>
+      <guid>http://localhost:1313/posts/my-first-post/</guid>
       <description>hugo 上的第一篇博客 Hello world！</description>
     </item>
   </channel>
