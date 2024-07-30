@@ -1,7 +1,7 @@
 +++
 title = 'NUS Summer Workshop'
 date = 2024-07-20T00:24:40+08:00
-draft = true
+draft = false
 category = "study"
 tags = ["NUS", "cloud-computing", "kubernetes", "thai-food"]
 +++
