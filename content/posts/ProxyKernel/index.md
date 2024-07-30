@@ -497,7 +497,7 @@ long do_syscall(long a0, long a1, long a2, long a3, long a4, long a5, long a6,
 在`fs_init`中，hostfs 被挂载到 / 下，RFS 被挂载到 /RAMDISK0 下
 
 ### 4.2 RFS 和 hostfs
-RFS 具有 1*superblock, 10*disk inodes, 1*bitmap, 1*free blocks。
+RFS 直接借用了 XV6 的实现。
 ```C
 /*
  * RFS (Ramdisk File System) is a customized simple file system installed in the
