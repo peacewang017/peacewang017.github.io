@@ -6,7 +6,7 @@ draft = false
 
 # 1 系统启动
 
-## 1.1 内核载入
+## 1.1 内核的载入
 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。
 ```shell
 $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke
@@ -54,7 +54,7 @@ ELF 的文件入口地址是 0x80000548，具有代码段(段首地址是 0x8000
 
 代码段的段首地址是 0x80000000，而 spike 模拟器为程序模拟的内存也以 0x80000000 这个地址为起始地址。
 
-## 1.2 内核启动与初始化
+## 1.2 内核的启动与初始化
 载入 spike 的内存后，内核的入口地址是 _mentry 汇编函数:
 
 ```shell
@@ -280,7 +280,7 @@ typedef struct process_t {
 ## 3.2 进程调度
 进程管理与调度的实现主要在`process.c`和`sched.c`中。
 
-`ready_queue_head`和`blocked_queue_head`是两个 PCB 链表，`schedule()`会调度一个进程投入运行:
+`ready_queue_head`和`blocked_queue_head`是两个 PCB 链表，`schedule()`会依据这两个链表调度一个进程投入运行:
 
 ```C
 void schedule()
@@ -457,6 +457,138 @@ int do_fork(process *parent)
 }
 ```
 
+## 3.4 中断的实现
+ProxyKernel 中，所有的系统调用都是`do_user_call`，这是一个内联汇编函数，调用了机器指令`ecall`。在调用之前，所有的参数都已经放在了(`a0` - `a7`)这些寄存器中，这一步无需我们实现，这是寄存器对函数传参的默认处理方式。
 
+`ecall` 指令的执行将根据 `a0` 寄存器中的值获得系统调用号，并使 RISC-V 转到 S 模式(因为启动时将所有的中断、异常、系统调用都代理给了 S 模式)的 trap 处理入口执行(在kernel/strap_vector.S 文件中定义)。
+
+在 strap_vector.S 中，系统会将中断现场保存到`process_t`中的`trapframe`中，完成栈的切换，最终调用`smode_trap_handler`。
+
+最终，`smode_trap_handler`->`handle_syscall`->`do_syscall`，根据调用号转到不同的处理函数。
+
+```C
+static void handle_syscall(trapframe *tf)
+{
+	tf->epc += 4;
+	tf->regs.a0 = do_syscall(tf->regs.a0, tf->regs.a1, tf->regs.a2,
+				 tf->regs.a3, tf->regs.a4, tf->regs.a5,
+				 tf->regs.a6, tf->regs.a7);
+}
+
+long do_syscall(long a0, long a1, long a2, long a3, long a4, long a5, long a6,
+		long a7)
+{
+	int hartid = (int)read_tp();
+	insert_to_ready_queue(current[hartid]);
+	switch (a0) {
+	case SYS_user_print:
+		return sys_user_print((const char *)a1, a2);
+	case SYS_user_exit:
+		return sys_user_exit(a1);
+	// ...
+	default:
+		panic("Unknown syscall %ld \n", a0);
+	}
+}
+```
+
+# 4 文件系统
+## 4.1 文件结构
+在`fs_init`中，hostfs 被挂载到 / 下，RFS 被挂载到 /RAMDISK0 下
+
+## 4.2 RFS 和 hostfs
+RFS 具有 1*superblock, 10*disk inodes, 1*bitmap, 1*free blocks。
+```C
+/*
+ * RFS (Ramdisk File System) is a customized simple file system installed in the
+ * RAM disk.
+ * Layout of the file system:
+ *
+ * ******** RFS MEM LAYOUT (112 BLOCKS) ****************
+ *   superblock  |  disk inodes  |  bitmap  |  free blocks  *
+ *     1 block   |   10 blocks   |     1    |     100       *
+ * *****************************************************
+ *
+ * The disk layout of rfs is similar to the fs in xv6.
+ */
+```
+
+## 4.3 VFS
+### 4.3.1 数据结构
+**接口**: VFS 通过函数指针提供向具体文件系统的接口，对于不同的文件系统(RFS, hostfs)，只需要如下赋值:
+
+```C
+const struct vinode_ops rfs_i_ops = {
+	.viop_read = rfs_read,
+	.viop_write = rfs_write,
+	.viop_create = rfs_create,
+	.viop_lseek = rfs_lseek,
+	.viop_disk_stat = rfs_disk_stat,
+	.viop_link = rfs_link,
+	.viop_unlink = rfs_unlink,
+	.viop_lookup = rfs_lookup,
+
+	.viop_readdir = rfs_readdir,
+	.viop_mkdir = rfs_mkdir,
+
+	.viop_write_back_vinode = rfs_write_back_vinode,
+
+	.viop_hook_opendir = rfs_hook_opendir,
+	.viop_hook_closedir = rfs_hook_closedir,
+};
+```
+
+
+```C
+// 函数指针接口
+struct vinode_ops {
+	// file operations
+	ssize_t (*viop_read)(struct vinode *node, char *buf, ssize_t len,
+			     int *offset);
+	ssize_t (*viop_write)(struct vinode *node, const char *buf, ssize_t len,
+			      int *offset);
+	// ...
+};
+```
+
+
+**vinode**: VFS 对具体文件系统中的 inode 进行了抽象，以构建通用的 vinode 对象。
+
+```C
+struct vinode {
+	int inum; // inode number of the disk inode
+	int ref; // reference count
+	int size; // size of the file (in bytes)
+	int type; // one of FILE_I, DIR_I
+	int nlinks; // number of hard links to this file
+	int blocks; // number of blocks
+	int addrs[DIRECT_BLKNUM]; // direct blocks
+	void *i_fs_info; // filesystem-specific info (see s_fs_info)
+	struct super_block *sb; // super block of the vfs inode
+	const struct vinode_ops *i_ops; // vfs inode operations
+};
+```
+
+**dentry**: VFS 中对目录项的抽象，该对象在 VFS 承载了多种功能，且同时存在于目录树和路径哈希表中。目录树和路径哈希表一起存在于内存中，相当于具体文件系统的“缓存”。
+
+```C
+struct dentry {
+	char name[MAX_DENTRY_NAME_LEN];
+	int d_ref;
+	struct vinode *dentry_inode;
+	struct dentry *parent;
+	struct super_block *sb;
+};
+```
+
+### 4.3.2 哈系缓存
+VFS 通过哈希链表的形式实现了对 dentry 与 vinode 两种结构的缓存和快速索引，它们都采用 util/hash_table.h 中定义的通用哈希链表类型(hash_table)实现，并提供各自的 key 类型、哈希函数以及 key 的等值判断函数。在 kernel/vfs.c 中能找到这两个哈希链表的定义。
+
+dentry 的哈希缓存是 key = <struct dentry *parent, char *name>, val = struct dentry*，即通过其父dentry 指针与 dentry 名称进行索引；如果如果发生冲突，则将所有冲突项依次进行比较。
+
+### 4.3.3 路径查询
+通过`lookup_final_dentry`进行查询，如果(通过 token 查找到)已经存在于 VFS 目录树中，则直接返回 dentry，否则需要访问具体文件系统。
+
+搜索路径的过程中遇到的不在 VFS 目录树中的节点，会被“按需”从磁盘中读出，并被加入到VFS目录树中。
 
 
