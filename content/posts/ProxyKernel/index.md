@@ -581,7 +581,7 @@ struct dentry {
 };
 ```
 
-#### 4.3.2 哈系缓存
+#### 4.3.2 哈希缓存
 VFS 通过哈希链表的形式实现了对 dentry 与 vinode 两种结构的缓存和快速索引，它们都采用 util/hash_table.h 中定义的通用哈希链表类型(hash_table)实现，并提供各自的 key 类型、哈希函数以及 key 的等值判断函数。在 kernel/vfs.c 中能找到这两个哈希链表的定义。
 
 dentry 的哈希缓存是 key = <struct dentry *parent, char *name>, val = struct dentry*，即通过其父dentry 指针与 dentry 名称进行索引；如果如果发生冲突，则将所有冲突项依次进行比较。
