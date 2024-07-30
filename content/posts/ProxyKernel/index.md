@@ -55,7 +55,7 @@ ELF 的文件入口地址是 0x80000548，具有代码段(段首地址是 0x8000
 代码段的段首地址是 0x80000000，而 spike 模拟器为程序模拟的内存也以 0x80000000 这个地址为起始地址。
 
 ### 1.2 内核的启动与初始化
-载入 spike 的内存后，内核的入口地址是 _mentry 汇编函数:
+载入 spike 的内存后，内核的入口地址是 `_mentry` 汇编函数:
 
 ```shell
 .globl _mentry
@@ -76,30 +76,26 @@ _mentry:
     call m_start
 ```
 
-**_mentry** 为内核分配 4KB 大小的内核栈，并调用 m_start。
+`_mentry` 为内核分配 4KB 大小的内核栈，并调用`m_start`。
 
-**m_start** 会初始化客户机-主机接口和文件接口， 将上一个状态设置为 S 态，并将“退回”到 S 态的函数指针 s_start 写到 mepc 寄存器中(90--93行)，再执行返回进入 s_start(由于上一个状态被设置为了 S 态)。
+`m_start` 会初始化客户机-主机接口和文件接口， 将上一个状态设置为 S 态，并将“退回”到 S 态的函数指针`s_start`写到 mepc 寄存器中(90--93行)，再执行返回进入`s_start`(由于上一个状态被设置为了 S 态)。
 
-**s_start** 会初始化内核页表、process_pool、VFS 等数据结构，最后载入制定 ELF 文件后调用 `schedule()` 开始调度进程运行。
+`s_start` 会初始化内核页表、process_pool、VFS 等数据结构，最后载入制定 ELF 文件后调用 `schedule()` 开始调度进程运行。
 
 ## 2 内存管理
 
 ### 2.1 Sv39 三级页表模型
-![](image.png)
-<p style="text-align: center;"><em>虚拟地址格式</em></p>
+![](image.png "虚拟地址格式")
 
-![](image-1.png)
-<p style="text-align: center;"><em>PDE/PTE 格式</em></p>
+![](image-1.png "PDE/PTE 格式")
 
-![](image-2.png)
-<p style="text-align: center;"><em>VA -> PA</em></p>
+![](image-2.png "VA -> PA")
 
-![](image-3.png)
-<p style="text-align: center;"><em>SATP 寄存器格式</em></p>
+![](image-3.png "SATP 寄存器格式")
 
 OS 从 SATP 的 PPN 中获得三级页表根目录的物理地址，根据 VPN[3] 找到页表二级目录地址... 找到页表后，根据 VPN[3] 找到 PPN，与 12 位 offset 一同构成 54 位 PA。
 
-除此之外，TLB(快表) 被用来加速 VA -> PA 转换(需要在进程切换的时候刷新 SATP 寄存器中 ASID 的值，如果发生进程切换，则 OS 需要调用 SFENCE.VMA 来刷新 TLB)
+除此之外，TLB(快表) 被用来加速 VA -> PA 转换(需要在进程切换的时候刷新 SATP 寄存器中 ASID 的值，如果发生进程切换，则 OS 需要调用`SFENCE.VMA`来刷新 TLB)
 
 ### 2.2 内存布局
 
@@ -190,7 +186,7 @@ static inline void spin_unlock(spinlock_t *lock)
 }
 ```
 
-获取锁成功则 lock 被置为 0，否则将持续等待。
+获取锁成功则`lock`被置为 0，否则将持续等待。
 
 ### 2.3 虚实地址转换
 Sv39 用户进程的根页表起始地址(PPN)会被记录在 SATP 寄存器中，页表本身在内存中`process_t`结构体内，`vmm.c`中提供了对页表的查询、映射、删除等操作函数。

@@ -472,7 +472,7 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
 <h3 id="41-文件结构">4.1 文件结构</h3>
 <p>在<code>fs_init</code>中，hostfs 被挂载到 / 下，RFS 被挂载到 /RAMDISK0 下</p>
 <h3 id="42-rfs-和-hostfs">4.2 RFS 和 hostfs</h3>
-<p>RFS 具有 1<em>superblock, 10</em>disk inodes, 1<em>bitmap, 1</em>free blocks。</p>
+<p>RFS 直接借用了 XV6 的实现。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * RFS (Ramdisk File System) is a customized simple file system installed in the
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * RAM disk.
@@ -536,7 +536,7 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> dentry <span style="color:#f92672">*</span>parent;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> super_block <span style="color:#f92672">*</span>sb;
 </span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><h4 id="432-哈系缓存">4.3.2 哈系缓存</h4>
+</span></span></code></pre></div><h4 id="432-哈希缓存">4.3.2 哈希缓存</h4>
 <p>VFS 通过哈希链表的形式实现了对 dentry 与 vinode 两种结构的缓存和快速索引，它们都采用 util/hash_table.h 中定义的通用哈希链表类型(hash_table)实现，并提供各自的 key 类型、哈希函数以及 key 的等值判断函数。在 kernel/vfs.c 中能找到这两个哈希链表的定义。</p>
 <p>dentry 的哈希缓存是 key = &lt;struct dentry *parent, char <em>name&gt;, val = struct dentry</em>，即通过其父dentry 指针与 dentry 名称进行索引；如果如果发生冲突，则将所有冲突项依次进行比较。</p>
 <h4 id="433-路径查询">4.3.3 路径查询</h4>

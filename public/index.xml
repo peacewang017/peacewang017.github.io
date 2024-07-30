@@ -6,7 +6,7 @@
     <description>Recent content on Jason&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jul 2024 20:29:36 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Jul 2024 00:24:40 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NUS Summer Workshop</title>
       <link>http://localhost:1313/posts/nus-summer-workshop/</link>
@@ -22,19 +22,13 @@ NUS summerworkshop 是 NUS SoC 每年暑假举办的活动（项目主页）, �
 <p>NUS summerworkshop 是 NUS SoC 每年暑假举办的活动（<a href="https://sws.comp.nus.edu.sg/">项目主页</a>）, 总共时长是两个月：第一个月学生在本国内上网课，第二个月需要到 NUS 实地完成一个现学现卖的项目，我在 12 个选项中选择了与云计算有关的 cloud-computing cluster。</p>
 <h1 id="1-住宿和饮食">1 住宿和饮食</h1>
 <p>在 NUS 的期间，学生会有 NUS 的学生卡、宿舍卡、定制的 EZ-LINK 交通卡等，走在校园里甚至有种自己也是 NUS 本科生的感觉。</p>
-<p><img loading="lazy" src="/posts/nus-summer-workshop/image.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image.png" type="" alt=""  title="校方提供的卡片"  /></p>
 <p>我们住在 PGPR，很标准的学生宿舍，干净整洁。美中不足的是，因为 NUS 本科生已经放假，宿舍旁的食堂没了多少选择，我常吃印度大婶卖的沙拉配果汁，或者 supersnack 里鸡排 + 薯条 + 华夫 + 柠檬水的套餐，偶尔馋冬阴功的时候，也会走路去 NUH 的食堂，或者坐公交去 Utown：</p>
-<p><img loading="lazy" src="/posts/nus-summer-workshop/image-1.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
-<p><img loading="lazy" src="/posts/nus-summer-workshop/image-2.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
-<p><img loading="lazy" src="/posts/nus-summer-workshop/image-3.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
-<p><img loading="lazy" src="/posts/nus-summer-workshop/image-4.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
-<p><img loading="lazy" src="/posts/nus-summer-workshop/image-5.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-1.png" type="" alt=""  title="印度大婶的沙拉"  /></p>
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-2.png" type="" alt=""  title="supersnack 的鸡排套餐，柠檬水闻起来怪怪的"  /></p>
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-3.png" type="" alt=""  title="supersnack 1.5新币的华夫相当饱人"  /></p>
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-4.png" type="" alt=""  title="NUH 食堂的冬阴功，目前为止最喜欢的外国菜"  /></p>
+<p><img loading="lazy" src="/posts/nus-summer-workshop/image-5.png" type="" alt=""  title="PGPR 宿舍"  /></p>
 <h1 id="2-课程和项目">2 课程和项目</h1>
 <p>&hellip;</p>
 ]]></content:encoded>
@@ -94,7 +88,7 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
 </span></span></code></pre></div><p>ELF 的文件入口地址是 0x80000548，具有代码段(段首地址是 0x80000000，长度是 0x3564)和数据段(段首地址是 0x80004000，长度是 0x98b8)。</p>
 <p>代码段的段首地址是 0x80000000，而 spike 模拟器为程序模拟的内存也以 0x80000000 这个地址为起始地址。</p>
 <h3 id="12-内核的启动与初始化">1.2 内核的启动与初始化</h3>
-<p>载入 spike 的内存后，内核的入口地址是 _mentry 汇编函数:</p>
+<p>载入 spike 的内存后，内核的入口地址是 <code>_mentry</code> 汇编函数:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>.globl _mentry
 </span></span><span style="display:flex;"><span>_mentry:
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">## [mscratch] = 0; mscratch points the stack bottom of machine mode computer</span>
@@ -111,21 +105,17 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">## jump to mstart(), i.e., machine state start function in kernel/machine/minit.c</span>
 </span></span><span style="display:flex;"><span>    call m_start
-</span></span></code></pre></div><p><strong>_mentry</strong> 为内核分配 4KB 大小的内核栈，并调用 m_start。</p>
-<p><strong>m_start</strong> 会初始化客户机-主机接口和文件接口， 将上一个状态设置为 S 态，并将“退回”到 S 态的函数指针 s_start 写到 mepc 寄存器中(90&ndash;93行)，再执行返回进入 s_start(由于上一个状态被设置为了 S 态)。</p>
-<p><strong>s_start</strong> 会初始化内核页表、process_pool、VFS 等数据结构，最后载入制定 ELF 文件后调用 <code>schedule()</code> 开始调度进程运行。</p>
+</span></span></code></pre></div><p><code>_mentry</code> 为内核分配 4KB 大小的内核栈，并调用<code>m_start</code>。</p>
+<p><code>m_start</code> 会初始化客户机-主机接口和文件接口， 将上一个状态设置为 S 态，并将“退回”到 S 态的函数指针<code>s_start</code>写到 mepc 寄存器中(90&ndash;93行)，再执行返回进入<code>s_start</code>(由于上一个状态被设置为了 S 态)。</p>
+<p><code>s_start</code> 会初始化内核页表、process_pool、VFS 等数据结构，最后载入制定 ELF 文件后调用 <code>schedule()</code> 开始调度进程运行。</p>
 <h2 id="2-内存管理">2 内存管理</h2>
 <h3 id="21-sv39-三级页表模型">2.1 Sv39 三级页表模型</h3>
-<p><img loading="lazy" src="/posts/proxykernel/image.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
-<p><img loading="lazy" src="/posts/proxykernel/image-1.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
-<p><img loading="lazy" src="/posts/proxykernel/image-2.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
-<p><img loading="lazy" src="/posts/proxykernel/image-3.png" type="" alt=""  /></p>
-<!-- raw HTML omitted -->
+<p><img loading="lazy" src="/posts/proxykernel/image.png" type="" alt=""  title="虚拟地址格式"  /></p>
+<p><img loading="lazy" src="/posts/proxykernel/image-1.png" type="" alt=""  title="PDE/PTE 格式"  /></p>
+<p><img loading="lazy" src="/posts/proxykernel/image-2.png" type="" alt=""  title="VA -&gt; PA"  /></p>
+<p><img loading="lazy" src="/posts/proxykernel/image-3.png" type="" alt=""  title="SATP 寄存器格式"  /></p>
 <p>OS 从 SATP 的 PPN 中获得三级页表根目录的物理地址，根据 VPN[3] 找到页表二级目录地址&hellip; 找到页表后，根据 VPN[3] 找到 PPN，与 12 位 offset 一同构成 54 位 PA。</p>
-<p>除此之外，TLB(快表) 被用来加速 VA -&gt; PA 转换(需要在进程切换的时候刷新 SATP 寄存器中 ASID 的值，如果发生进程切换，则 OS 需要调用 SFENCE.VMA 来刷新 TLB)</p>
+<p>除此之外，TLB(快表) 被用来加速 VA -&gt; PA 转换(需要在进程切换的时候刷新 SATP 寄存器中 ASID 的值，如果发生进程切换，则 OS 需要调用<code>SFENCE.VMA</code>来刷新 TLB)</p>
 <h3 id="22-内存布局">2.2 内存布局</h3>
 <h4 id="221-内核">2.2.1 内核</h4>
 <p>对于内核，从 1.2 中我们知道，由于 Spike 为 PK-ELF 留出的空间(0X80000000 - 0xffffffff) 的起始地址与 PK-ELF 代码段的起始地址相同，内核页表无需做任何转换，内核态下的虚实地址一一对应(因此，PK 也支持无页表的 bare mode)。</p>
@@ -196,7 +186,7 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	lock<span style="color:#f92672">-&gt;</span>lock <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>获取锁成功则 lock 被置为 0，否则将持续等待。</p>
+</span></span></code></pre></div><p>获取锁成功则<code>lock</code>被置为 0，否则将持续等待。</p>
 <h3 id="23-虚实地址转换">2.3 虚实地址转换</h3>
 <p>Sv39 用户进程的根页表起始地址(PPN)会被记录在 SATP 寄存器中，页表本身在内存中<code>process_t</code>结构体内，<code>vmm.c</code>中提供了对页表的查询、映射、删除等操作函数。</p>
 <h3 id="24-malloc-实现">2.4 malloc 实现</h3>
@@ -472,7 +462,7 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
 <h3 id="41-文件结构">4.1 文件结构</h3>
 <p>在<code>fs_init</code>中，hostfs 被挂载到 / 下，RFS 被挂载到 /RAMDISK0 下</p>
 <h3 id="42-rfs-和-hostfs">4.2 RFS 和 hostfs</h3>
-<p>RFS 具有 1<em>superblock, 10</em>disk inodes, 1<em>bitmap, 1</em>free blocks。</p>
+<p>RFS 直接借用了 XV6 的实现。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * RFS (Ramdisk File System) is a customized simple file system installed in the
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * RAM disk.
@@ -536,7 +526,7 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> dentry <span style="color:#f92672">*</span>parent;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> super_block <span style="color:#f92672">*</span>sb;
 </span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><h4 id="432-哈系缓存">4.3.2 哈系缓存</h4>
+</span></span></code></pre></div><h4 id="432-哈希缓存">4.3.2 哈希缓存</h4>
 <p>VFS 通过哈希链表的形式实现了对 dentry 与 vinode 两种结构的缓存和快速索引，它们都采用 util/hash_table.h 中定义的通用哈希链表类型(hash_table)实现，并提供各自的 key 类型、哈希函数以及 key 的等值判断函数。在 kernel/vfs.c 中能找到这两个哈希链表的定义。</p>
 <p>dentry 的哈希缓存是 key = &lt;struct dentry *parent, char <em>name&gt;, val = struct dentry</em>，即通过其父dentry 指针与 dentry 名称进行索引；如果如果发生冲突，则将所有冲突项依次进行比较。</p>
 <h4 id="433-路径查询">4.3.3 路径查询</h4>
