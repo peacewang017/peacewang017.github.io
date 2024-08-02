@@ -2,6 +2,7 @@
 title = 'ProxyKernel'
 date = 2024-03-27T18:52:42+08:00
 draft = false
+tags = ["OS", "RISC-V", "HUST"]
 +++
 
 ## 1 系统启动
