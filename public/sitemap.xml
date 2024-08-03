@@ -8,6 +8,9 @@
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-07-25T20:29:36+08:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2024-07-20T00:24:40+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/cloud-computing/</loc>
     <lastmod>2024-07-20T00:24:40+08:00</lastmod>
   </url><url>
@@ -20,13 +23,28 @@
     <loc>http://localhost:1313/posts/nus-summer-workshop/</loc>
     <lastmod>2024-07-20T00:24:40+08:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/categories/study/</loc>
+    <lastmod>2024-07-20T00:24:40+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-07-20T00:24:40+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/thai-food/</loc>
     <lastmod>2024-07-20T00:24:40+08:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/hust/</loc>
+    <lastmod>2024-03-27T18:52:42+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/os/</loc>
+    <lastmod>2024-03-27T18:52:42+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/project/</loc>
+    <lastmod>2024-03-27T18:52:42+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/proxykernel/</loc>
+    <lastmod>2024-03-27T18:52:42+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/risc-v/</loc>
     <lastmod>2024-03-27T18:52:42+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/blog/</loc>
@@ -39,7 +57,5 @@
     <lastmod>2024-02-18T23:00:39+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/archives/</loc>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
   </url>
 </urlset>

@@ -2,8 +2,8 @@
 title = 'NUS Summer Workshop'
 date = 2024-07-20T00:24:40+08:00
 draft = false
-category = "study"
-tags = ["NUS", "cloud-computing", "kubernetes", "Thai-food"]
+categories = "study"
+tags = ["NUS", "Cloud-computing", "Kubernetes", "Thai-food"]
 +++
 
 几个月前我刚刚来过新加坡，现在又回来了，不过不同于之前的纯旅游，这次的活动有一些 workload。

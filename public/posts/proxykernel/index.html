@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
 <title>ProxyKernel | Jason&#39;s blog</title>
-<meta name="keywords" content="">
+<meta name="keywords" content="OS, RISC-V, HUST">
 <meta name="description" content="1 系统启动 1.1 内核的载入 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。
 $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: EXEC (Executable file) Machine: RISC-V Version: 0x1 Entry point address: 0x80000548 Start of program headers: 64 (bytes into file) Start of section headers: 130760 (bytes into file) Flags: 0x5, RVC, double-float ABI Size of this header: 64 (bytes) Size of program headers: 56 (bytes) Number of program headers: 2 Size of section headers: 64 (bytes) Number of section headers: 18 Section header string table index: 17 $ riscv64-unknown-elf-readelf -l .">
 <meta name="author" content="">
@@ -57,7 +57,7 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
   "name": "ProxyKernel",
   "description": "1 系统启动 1.1 内核的载入 由于是“代理内核”，PK 并不运行在真正的机器上，Spike 模拟器将其当作一个 ELF 文件载入，所以可以通过 readelf 来看内核的可执行程序。\n$ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2\u0026#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: EXEC (Executable file) Machine: RISC-V Version: 0x1 Entry point address: 0x80000548 Start of program headers: 64 (bytes into file) Start of section headers: 130760 (bytes into file) Flags: 0x5, RVC, double-float ABI Size of this header: 64 (bytes) Size of program headers: 56 (bytes) Number of program headers: 2 Size of section headers: 64 (bytes) Number of section headers: 18 Section header string table index: 17 $ riscv64-unknown-elf-readelf -l .",
   "keywords": [
-    
+    "OS", "RISC-V", "HUST"
   ],
   "wordCount" : "1636",
   "inLanguage": "en",
@@ -214,8 +214,8 @@ function toggleThemeListener() {
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives/" title="Archieve"
-                >Archieve
+                <a href="http://localhost:1313/archives/" title="Archive"
+                >Archive
                 </a>
             </li>
             <li>
@@ -238,7 +238,9 @@ function toggleThemeListener() {
     <h1 class="post-title">ProxyKernel</h1>
     <div class="post-meta"><span class="meta-item">
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
-  <span>March 27, 2024</span></span>
+  <span>March 27, 2024</span></span><span class="meta-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
+  <span class="post-tags"><a href="http://localhost:1313/tags/os/">OS</a><a href="http://localhost:1313/tags/risc-v/">RISC-V</a><a href="http://localhost:1313/tags/hust/">HUST</a></span></span>
 
       
       

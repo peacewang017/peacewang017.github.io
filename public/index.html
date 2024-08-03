@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.129.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.130.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
@@ -175,8 +175,8 @@ function toggleThemeListener() {
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives/" title="Archieve"
-                >Archieve
+                <a href="http://localhost:1313/archives/" title="Archive"
+                >Archive
                 </a>
             </li>
             <li>
@@ -244,10 +244,12 @@ function toggleThemeListener() {
   <section class="entry-content">
     
       <p>几个月前我刚刚来过新加坡，现在又回来了，不过不同于之前的纯旅游，这次的活动有一些 workload。
-NUS summerworkshop 是 NUS SoC 每年暑假举办的活动（项目主页）, 总共时长是两个月：第一个月学生在本国内上网课，第二个月需要到 NUS 实地完成一个现学现卖的项目，我在 12 个选项中选择了与云计算有关的 cloud-computing cluster。
+NUS summerworkshop 是 NUS SoC 每年暑假举办的活动（项目主页）, 总共时长是两个月：phase 1 阶段学生在本国内上网课，phase 2 需要到 NUS 实地完成一个现学现卖的项目，我在 12 个选项中选择了与云计算有关的 cloud-computing cluster。
 1 住宿和饮食 在 NUS 的期间，学生会有 NUS 的学生卡、宿舍卡、定制的 EZ-LINK 交通卡等，走在校园里甚至有种自己也是 NUS 本科生的感觉。
 我们住在 PGPR，很标准的学生宿舍，干净整洁。美中不足的是，因为 NUS 本科生已经放假，宿舍旁的食堂没了多少选择，我常吃印度大婶卖的沙拉配果汁，或者 supersnack 里鸡排 &#43; 薯条 &#43; 华夫 &#43; 柠檬水的套餐，偶尔馋冬阴功的时候，也会走路去 NUH 的食堂，或者坐公交去 Utown：
-2 课程和项目 …</p>
+2 课程和项目 2.1 课程 phase 2 内容主要是，用一周左右的时间理解 lecture 上老师提到的内容，并自由组队完成一个项目。
+Richard 是我们的老师，他言语和善，并且显然很认真地准备了课程。在 lecture 时，他对于 kubernetes 的部署有不少 hands-on 的操作，而非对着 PPT 朗诵。
+2.2 项目 我与来自北邮和川大的三位同学组队，完成了一个云原生智慧网盘应用，它拥有一个 Vue 前端、一个 Springboot 后端、一些 python 中间件，支持文件的上传、下载、分享，以及对文件内容的精确匹配 / 语义模糊匹配、基于文件的 R-A-G 等，前后端与其他组件全部通过 kubernetes 部署到 AWS 集群上。...</p>
     
   </section>
   <footer class="entry-footer"><span class="meta-item">
@@ -272,7 +274,9 @@ $ riscv64-unknown-elf-readelf -h ./obj/riscv-pke ELF Header: Magic: 7f 45 4c 46 
   </section>
   <footer class="entry-footer"><span class="meta-item">
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
-  <span>March 27, 2024</span></span>
+  <span>March 27, 2024</span></span><span class="meta-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
+  <span class="post-tags"><a href="http://localhost:1313/tags/os/">OS</a><a href="http://localhost:1313/tags/risc-v/">RISC-V</a><a href="http://localhost:1313/tags/hust/">HUST</a></span></span>
 </footer>
   <a class="entry-link" aria-label="post link to ProxyKernel" href="http://localhost:1313/posts/proxykernel/"></a>
 </article>

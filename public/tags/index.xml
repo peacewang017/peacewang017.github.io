@@ -48,6 +48,36 @@
     </item>
     
     <item>
+      <title>HUST</title>
+      <link>http://localhost:1313/tags/hust/</link>
+      <pubDate>Wed, 27 Mar 2024 18:52:42 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/hust/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>OS</title>
+      <link>http://localhost:1313/tags/os/</link>
+      <pubDate>Wed, 27 Mar 2024 18:52:42 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/os/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>RISC-V</title>
+      <link>http://localhost:1313/tags/risc-v/</link>
+      <pubDate>Wed, 27 Mar 2024 18:52:42 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/risc-v/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
       <title>Blog</title>
       <link>http://localhost:1313/tags/blog/</link>
       <pubDate>Sun, 18 Feb 2024 23:00:39 +0800</pubDate>

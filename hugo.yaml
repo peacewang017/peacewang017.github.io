@@ -7,6 +7,7 @@ theme: ["PaperModX"]
 
 # Home-Info Mode
 params:
+  # table of content
   showtoc: true
   tocopen: true
   TocSide: 'left'
@@ -25,11 +26,11 @@ params:
 
 menu:
   main:
-    - identifier: archieve
-      name: Archieve
+    - identifier: archive
+      name: Archive
       url: /archives/
       weight: 10
-    - identifier: category
+    - identifier: categories
       name: Categories
       url: /categories/
       weight: 20
