@@ -8,9 +8,8 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
 
 ## Research Interests
 
-- **Multimodal Systems**
-- **Vision-Language Models**
-- **Diffusion Models**
+- **Multimodal Generative Models** (diffusion, autoregressive)
+- **Interpretability**
 
 ## Experience
 
