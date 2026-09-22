@@ -14,6 +14,30 @@
     <link rel="canonical" href="{{ site.canonical }}"/>
     {% endif %}
 
+    <!-- Link preview cards (WeChat, Slack, LinkedIn, X, ...) -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="{{ site.title }}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:url" content="{{ site.url }}/">
+    <meta property="og:image" content="{{ site.url }}/assets/img/avatar.jpg">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Structured data so search engines know this is Zhengyang Luo's personal page -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}/",
+      "image": "{{ site.url }}/assets/img/avatar.jpg",
+      "jobTitle": "{{ site.position }}",
+      "affiliation": { "@type": "CollegeOrUniversity", "name": "{{ site.affiliation }}" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Huazhong University of Science and Technology" },
+      "knowsAbout": ["Multimodal Systems", "Vision-Language Models", "Diffusion Models"],
+      "sameAs": ["{{ site.github_link }}", "{{ site.linkedin }}"]
+    }
+    </script>
+
     <link rel="icon" media="(prefers-color-scheme:dark)" href="{{ site.favicon_dark }}" type="image/png" />
     <link rel="icon" media="(prefers-color-scheme:light)" href="{{ site.favicon }}" type="image/png" />
     <script src="./assets/js/favicon-switcher.js" type="application/javascript"></script>

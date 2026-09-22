@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am an M.S. student in Electrical and Computer Engineering at the University of Michigan, advised by [Prof. Liyue Shen](https://liyueshen.engin.umich.edu/). I also worked with [Prof. Yingbin Liang](https://sites.google.com/view/yingbinliang/home) at The Ohio State University. Before that, I received my B.Eng. in Computer Science from Huazhong University of Science and Technology (HUST).
+I am an M.S. student in Electrical and Computer Engineering at the University of Michigan, advised by [Prof. Liyue Shen](https://liyueshen.engin.umich.edu/). I also work with [Prof. Yingbin Liang](https://sites.google.com/view/yingbinliang/home) at The Ohio State University. Before that, I received my B.Eng. in Computer Science from Huazhong University of Science and Technology (HUST).
 
 ## Research Interests
 

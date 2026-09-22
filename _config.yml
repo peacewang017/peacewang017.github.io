@@ -7,9 +7,10 @@ email: "cyruszyluo (at) gmail.com<br>zyluo (at) umich.edu"
 
 # Search Engine Optimization (SEO)
 # The following information is used to improve the website traffic from search engines, e.g., Google.
-keywords: Zhengyang Luo, Cyrus Luo, University of Michigan, multimodal systems, vision-language models, diffusion models
+keywords: Zhengyang Luo, University of Michigan, multimodal systems, vision-language models, diffusion models
 description: Personal homepage of Zhengyang Luo, M.S. student in ECE at the University of Michigan.
 canonical: https://cyrusluo.site/
+url: https://cyrusluo.site
 
 # Links 
 # If you don't need one of them, you may delete the corresponding line.
@@ -35,9 +36,10 @@ auto_dark_mode: true
 font: "Serif" # or "Sans Serif"
 
 
-# Use this project as a remote theme for GitHub Pages
-# See the guide here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
-remote_theme: yaoyao-liu/minimal-light
+
+# Generates sitemap.xml for search engines
+plugins:
+  - jekyll-sitemap
 
 # The following files will be removed from the generated website.
 exclude:
