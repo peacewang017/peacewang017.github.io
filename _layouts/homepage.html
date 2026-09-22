@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <title>{{ site.title }} | {{site.affiliation}}</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.description }}">
+    {% if site.keywords %}
+    <meta name="keywords" content="{{ site.keywords }}">
+    {% endif %}
+    {% if site.canonical %}
+    <link rel="canonical" href="{{ site.canonical }}"/>
+    {% endif %}
+
+    <link rel="icon" media="(prefers-color-scheme:dark)" href="{{ site.favicon_dark }}" type="image/png" />
+    <link rel="icon" media="(prefers-color-scheme:light)" href="{{ site.favicon }}" type="image/png" />
+    <script src="./assets/js/favicon-switcher.js" type="application/javascript"></script>
+
+    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Calligraphy font for the motto, subset to just its characters -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&text=%E9%A4%90%E5%85%AD%E6%B0%A3%E8%80%8C%E9%A3%B2%E6%B2%86%E7%80%A3%E5%85%AE%EF%BC%8C%E6%BC%B1%E6%AD%A3%E9%99%BD%E5%90%AB%E6%9C%9D%E9%9C%9E%E3%80%82%E4%BF%9D%E7%A5%9E%E6%98%8E%E4%B9%8B%E6%B8%85%E6%BE%84%E7%B2%BE%E5%85%A5%E7%B2%97%E7%A9%A2%E9%99%A4&display=swap">
+    <style>
+      .motto { margin-top: 2.5em; text-align: center; font-family: "LXGW WenKai TC", "STKaiti", "KaiTi", serif; font-style: italic; font-size: 0.95rem; line-height: 1.9; letter-spacing: 0.08em; }
+      .motto a, .motto a:hover { color: #999; text-decoration: none; }
+      .exp { margin-bottom: 1.2em; }
+      .exp-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0 1em; }
+      .exp-org { font-weight: bold; }
+      .exp-date { color: #888; font-size: 0.95em; white-space: nowrap; margin-left: auto; }
+      .exp-role { font-style: italic; }
+      .exp-desc { margin-top: 0.2em; }
+    </style>
+
+    {% if site.font == "Sans Serif" %}
+    <link rel="stylesheet" href="./assets/css/font_sans_serif.css">
+    {% else %}
+    <link rel="stylesheet" href="./assets/css/font.css">
+    {% endif %}
+    {% if site.auto_dark_mode %}
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/publications.css">
+    {% else %}
+    <link rel="stylesheet" href="./assets/css/style-no-dark-mode.css">
+    <link rel="stylesheet" href="./assets/css/publications-no-dark-mode.css">
+    {% endif %}
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        
+        {% if site.avatar %}
+        <a class="image avatar"><img src="{{ site.avatar }}" alt="avatar" /></a>
+        {% endif %}
+
+        <h1>{{ site.title }}</h1>
+
+        {% if site.position %}
+        <position style="font-size:1.10rem;">{{ site.position }}</position>
+        <br>
+        {% endif %}
+        {% if site.affiliation %}
+        <a href="{{ site.affiliation_link }}" rel="noopener"><autocolor>{{ site.affiliation }}</autocolor></a>
+        <br>
+        {% endif %}
+        {% if site.email %}
+        <email>{{ site.email }}</email>
+        {% endif %}
+
+        <br>
+        <br>
+        <div class="social-icons">
+        {% if site.google_scholar %}
+        <a style="margin: 0 5px 0 0" href="{{ site.google_scholar }}">
+          <i class="ai ai-google-scholar" style="font-size:1.2rem"></i>
+        </a>  
+        {% endif %}
+
+        {% if site.cv_link %}
+        <a style="margin: 0 5px 0 0" href="{{ site.cv_link }}">
+          <i class="ai ai-cv" style="font-size:1.3rem;"></i>
+        </a>
+        {% endif %}
+
+        {% if site.github_link %}
+        <a style="margin: 0 5px 0 0" href="{{ site.github_link }}">
+          <i class="fab fa-github"></i>
+        </a>
+        {% endif %}
+
+        {% if site.linkedin %}
+        <a style="margin: 0 5px 0 0" href="{{ site.linkedin }}">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        {% endif %}
+
+        {% if site.twitter %}
+        <a style="margin: 0 0 0 0" href="{{ site.twitter }}">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        {% endif %}
+        </div>
+        <br>
+
+      </header>
+      <section>
+
+      {{ content }}
+
+      <br>
+
+      {% if site.enable_footnote %}
+      <p><small>Powered by Jekyll and <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener">Minimal Light</a> theme.</small></p>
+      {% endif %}
+
+      <p class="motto"><a href="https://ctext.org/chu-ci/yuan-you/zh" target="_blank" rel="noopener">餐六氣而飲沆瀣兮，漱正陽而含朝霞。<br>保神明之清澄兮，精氣入而粗穢除。</a></p>
+
+      </section>
+      <footer>
+        
+      </footer>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    {% if site.google_analytics %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ site.google_analytics }}', 'auto');
+      ga('send', 'pageview');
+    </script>
+    {% endif %}
+  </body>
+</html>
