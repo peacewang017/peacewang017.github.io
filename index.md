@@ -8,7 +8,8 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
 
 ## Research Interests
 
-- **Multimodal Generative Models** (diffusion, autoregressive)
+- **Generative models of different paradigms** (AR, continuous/discrete diffusion)
+- **Multimodal systems and real-world applications** (VLM, VLA)
 - **Interpretability**
 
 ## Experience
@@ -19,7 +20,7 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
     <span class="exp-date">Aug. 2024 – Jan. 2025</span>
   </div>
   <div class="exp-role">Software Engineer Intern</div>
-  <div class="exp-desc">Worked on efficient cloud GPU cluster management, mentored by <a href="https://qzweng.github.io/">Dr. Qizhen Weng</a>.</div>
+  <div class="exp-desc">Worked on efficient cloud GPU cluster management and customized distributed training framework, mentored by <a href="https://qzweng.github.io/">Dr. Qizhen Weng</a>.</div>
 </div>
 
 <div class="exp">
