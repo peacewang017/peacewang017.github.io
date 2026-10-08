@@ -8,9 +8,11 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
 
 ## Research Interests
 
-- **Generative models of different paradigms** (AR, continuous/discrete diffusion)
-- **Multimodal systems and real-world applications** (VLM, VLA)
-- **Interpretability**
+My research centers on **generative models**. Specifically, I am interested in:
+
+- **Multimodal systems** (VLM, VLA, etc.)
+- **Scientific applications** (healthcare, chemical synthesis, etc.)
+- **Mechanistic interpretability**
 
 ## Experience
 
@@ -19,8 +21,8 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
     <span class="exp-org">TeleAI @ China Telecom</span>
     <span class="exp-date">Aug. 2024 – Jan. 2025</span>
   </div>
-  <div class="exp-role">Software Engineer Intern</div>
-  <div class="exp-desc">Worked on efficient cloud GPU cluster management and customized distributed training framework, mentored by <a href="https://qzweng.github.io/">Dr. Qizhen Weng</a>.</div>
+  <div class="exp-role">Software Engineer Intern, Mentor: <a href="https://qzweng.github.io/">Dr. Qizhen Weng</a></div>
+  <div class="exp-desc">Customized and deployed Ulysses context-parallel distributed training framework for video DiT, including HunyuanVideo, Wan, and internal T2V/I2V models.</div>
 </div>
 
 <div class="exp">
@@ -28,6 +30,6 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
     <span class="exp-org">National University of Singapore</span>
     <span class="exp-date">Jul. 2024 – Aug. 2024</span>
   </div>
-  <div class="exp-role"><a href="https://sws.comp.nus.edu.sg/">SoC Summer Workshop</a></div>
-  <div class="exp-desc">Cloud Computing Track, supervised by <a href="https://www.comp.nus.edu.sg/~tbma">Prof. Richard Ma</a>.</div>
+  <div class="exp-role"><a href="https://sws.comp.nus.edu.sg/">SoC Summer Workshop</a>, Supervisor: <a href="https://www.comp.nus.edu.sg/~tbma">Prof. Richard Ma</a></div>
+  <div class="exp-desc">Cloud Computing Track, awarded A+.</div>
 </div>
