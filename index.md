@@ -10,9 +10,9 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
 
 My research centers on **generative models**. Specifically, I am interested in:
 
-- **Multimodal systems** (VLM, VLA, etc.)
-- **Scientific applications** (healthcare, chemical synthesis, etc.)
+- **Multimodal systems** <span class="note">(VLM, VLA, etc.)</span>
 - **Mechanistic interpretability**
+- **Real-world application** <span class="note">(healthcare, chemical synthesis, etc.)</span>
 
 ## Experience
 
