@@ -14,6 +14,8 @@ My research centers on **generative models**. Specifically, I am interested in:
 - **Model architecture & Mechanistic interpretability**
 - **Real-world applications** <span class="note">(healthcare, chemical synthesis, etc.)</span>
 
+{% include_relative _includes/publications.md %}
+
 ## Experience
 
 <div class="exp">
