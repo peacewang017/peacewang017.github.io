@@ -48,8 +48,19 @@
     <!-- Calligraphy font for the motto, subset to just its characters -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&text=%E9%A4%90%E5%85%AD%E6%B0%A3%E8%80%8C%E9%A3%B2%E6%B2%86%E7%80%A3%E5%85%AE%EF%BC%8C%E6%BC%B1%E6%AD%A3%E9%99%BD%E5%90%AB%E6%9C%9D%E9%9C%9E%E3%80%82%E4%BF%9D%E7%A5%9E%E6%98%8E%E4%B9%8B%E6%B8%85%E6%BE%84%E7%B2%BE%E5%85%A5%E7%B2%97%E7%A9%A2%E9%99%A4&display=swap">
     <style>
-      .motto { margin-top: 2.5em; text-align: center; font-family: "LXGW WenKai TC", "STKaiti", "KaiTi", serif; font-style: italic; font-size: 0.95rem; line-height: 1.9; letter-spacing: 0.08em; }
-      .motto a, .motto a:hover { color: #999; text-decoration: none; }
+      .motto {
+        margin: 1.8em auto 0;
+        padding-top: 1.6em;
+        max-width: 100%;
+        border-top: 1px solid rgba(128, 128, 128, 0.28);
+        text-align: center;
+        font-family: "LXGW WenKai TC", "STKaiti", "KaiTi", serif;
+        font-size: 0.74rem;
+        font-style: italic;
+        line-height: 2.1;
+        letter-spacing: 0.04em;
+      }
+      .motto a, .motto a:hover { color: #9a9a9a; text-decoration: none; }
       .note { color: #888; font-style: italic; }
       .pub-group { font-size: 1.05rem; margin: 1.1em 0 0.5em; }
       .pub { margin-bottom: 1.1em; }
@@ -59,6 +70,9 @@
       .pub-links a { font-size: 0.8rem; letter-spacing: 0.03em; text-decoration: none; border: 1px solid currentColor; border-radius: 3px; padding: 0.05em 0.45em; margin-right: 0.4em; opacity: 0.85; }
       .pub-links a:hover { opacity: 1; }
       .exp { margin-bottom: 1.2em; }
+      .edu { display: flex; align-items: flex-start; gap: 0.85em; }
+      .edu-logo { width: 46px; height: auto; flex: none; margin-top: 0.15em; }
+      .edu-body { flex: 1; min-width: 0; }
       .exp-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0 1em; }
       .exp-org { font-weight: bold; }
       .exp-date { color: #888; font-size: 0.95em; white-space: nowrap; margin-left: auto; }
@@ -135,7 +149,10 @@
         </a>
         {% endif %}
         </div>
-        <br>
+
+        <div class="motto">
+          <a href="https://ctext.org/chu-ci/yuan-you/zh" target="_blank" rel="noopener">餐六氣而飲沆瀣兮，漱正陽而含朝霞。<br>保神明之清澄兮，精氣入而粗穢除。</a>
+        </div>
 
       </header>
       <section>
@@ -147,8 +164,6 @@
       {% if site.enable_footnote %}
       <p><small>Powered by Jekyll and <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener">Minimal Light</a> theme.</small></p>
       {% endif %}
-
-      <p class="motto"><a href="https://ctext.org/chu-ci/yuan-you/zh" target="_blank" rel="noopener">餐六氣而飲沆瀣兮，漱正陽而含朝霞。<br>保神明之清澄兮，精氣入而粗穢除。</a></p>
 
       </section>
       <footer>

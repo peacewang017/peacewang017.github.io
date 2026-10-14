@@ -27,11 +27,26 @@ My research centers on **generative models**. Specifically, I am interested in:
   <div class="exp-desc">Customized and deployed Ulysses context-parallel distributed training framework for video DiT, including HunyuanVideo, Wan, and internal T2V/I2V models.</div>
 </div>
 
-<div class="exp">
-  <div class="exp-head">
-    <span class="exp-org">National University of Singapore</span>
-    <span class="exp-date">Jul. 2024 – Aug. 2024</span>
+## Education
+
+<div class="exp edu">
+  <img class="edu-logo" src="./assets/img/um-logo.svg" alt="University of Michigan logo">
+  <div class="edu-body">
+    <div class="exp-head">
+      <span class="exp-org">University of Michigan</span>
+      <span class="exp-date">Sep. 2025 – Jun. 2027 (expected)</span>
+    </div>
+    <div class="exp-role">M.S. in Electrical and Computer Engineering</div>
   </div>
-  <div class="exp-role"><a href="https://sws.comp.nus.edu.sg/">SoC Summer Workshop</a>, Supervisor: <a href="https://www.comp.nus.edu.sg/~tbma">Prof. Richard Ma</a></div>
-  <div class="exp-desc">Cloud Computing Track, awarded A+.</div>
+</div>
+
+<div class="exp edu">
+  <img class="edu-logo" src="./assets/img/hust-emblem.svg" alt="HUST emblem">
+  <div class="edu-body">
+    <div class="exp-head">
+      <span class="exp-org">Huazhong University of Science and Technology</span>
+      <span class="exp-date">Sep. 2021 – Jun. 2025</span>
+    </div>
+    <div class="exp-role">B.Eng. in Computer Science</div>
+  </div>
 </div>
