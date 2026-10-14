@@ -11,7 +11,7 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
 My research centers on **generative models**. Specifically, I am interested in:
 
 - **Multimodal systems** <span class="note">(VLM, VLA, etc.)</span>
-- **Model architecture & mechanistic interpretability**
+- **Model architecture & Mechanistic interpretability**
 - **Real-world applications** <span class="note">(healthcare, chemical synthesis, etc.)</span>
 
 ## Experience
