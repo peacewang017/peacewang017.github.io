@@ -1,9 +1,6 @@
 ## Publications
 
-{% for group in site.data.publications.groups %}{% if group.items and group.items != empty %}
-<h3 class="pub-group">{{ group.name }}</h3>
-
-{% for pub in group.items %}
+{% for pub in site.data.publications.papers %}
 <div class="pub">
   <div class="pub-title">{{ pub.title }}</div>
   <div class="pub-authors">{{ pub.authors }}</div>
@@ -17,4 +14,3 @@
   </div>
 </div>
 {% endfor %}
-{% endif %}{% endfor %}
