@@ -12,7 +12,7 @@ My research centers on **generative models**. Specifically, I am interested in:
 
 - **Multimodal systems** <span class="note">(VLM, VLA, etc.)</span>
 - **Model architecture & Mechanistic interpretability**
-- **Real-world applications** <span class="note">(healthcare, chemical synthesis, etc.)</span>
+- **Real-world applications** <span class="note">(healthcare, science, etc.)</span>
 
 {% include_relative _includes/publications.md %}
 
