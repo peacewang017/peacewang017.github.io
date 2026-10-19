@@ -8,9 +8,9 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
 
 ## Research Interests
 
-My research centers on **generative models**. Specifically, I am interested in:
+My research centers on **foundation models**. Specifically, I am interested in:
 
-- **Multimodal systems** <span class="note">(VLM, VLA, etc.)</span>
+- **Foundation models** <span class="note">(LLM, VLM, VLA, etc.)</span>
 - **Model architecture & Mechanistic interpretability**
 - **Real-world applications** <span class="note">(healthcare, science, robotics, etc.)</span>
 
