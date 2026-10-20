@@ -10,7 +10,7 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
 
 My research interests lie in:
 
-- **Foundation models** <span class="note">(LLM, VLM, VLA, etc.)</span>
+- **Multimodal foundation models** <span class="note">(VLM, VLA, etc.)</span>
 - **Model architecture & Mechanistic interpretability**
 - **Real-world applications** <span class="note">(agentic systems, scientific synthesis, etc.)</span>
 
