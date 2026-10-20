@@ -12,7 +12,7 @@ My research interests lie in **multimodal foundation models**, particularly:
 
 - **Model architecture**
 - **Mechanistic interpretability**
-- **Real-world applications** <span class="note">(VLA, healthcare, etc.)</span>
+- **Real-world applications** <span class="note">(VLA, GUI agents, healthcare, etc.)</span>
 
 {% include_relative _includes/publications.md %}
 
