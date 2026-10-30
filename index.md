@@ -11,7 +11,7 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
 My research interests lie in **multimodal foundation models**, particularly:
 
 - **Model architecture & Mechanistic interpretability**
-- **Real-world applications** <span class="note">(VLA, GUI agents, healthcare, etc.)</span>
+- **Real-world applications** <span class="note">(Robotics, GUI Agents, Healthcare, etc.)</span>
 
 {% include_relative _includes/publications.md %}
 
