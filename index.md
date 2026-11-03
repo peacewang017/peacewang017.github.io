@@ -8,7 +8,7 @@ I am an M.S. student in Electrical and Computer Engineering at the University of
 
 ## Research Interests
 
-My research interests lie in **multimodal foundation models**, particularly:
+My research interests lie in **foundation models**, particularly:
 
 - **Model architecture & Mechanistic interpretability**
 - **Real-world applications** <span class="note">(Robotics, GUI Agents, Healthcare, etc.)</span>
