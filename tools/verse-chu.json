@@ -1,0 +1,269 @@
+{
+ "repo": "zhouyongh/hanzi-glyphs-svg",
+ "commit": "46d80fdc33f596a8c010965852ce28256a761f0a",
+ "columns": [
+  [
+   {
+    "char": "餐",
+    "written_as": "餐",
+    "layer": "seal",
+    "file": "3DEC0.svg",
+    "id": "009910-0E00-000001",
+    "size": 1.0
+   },
+   {
+    "char": "六",
+    "written_as": "六",
+    "layer": "chu",
+    "file": "1065.svg",
+    "id": "00516D-0C00-000001",
+    "size": 0.8,
+    "source": "新蔡葛陵楚簡·乙組 4.58"
+   },
+   {
+    "char": "氣",
+    "written_as": "气",
+    "layer": "chu",
+    "file": "4871.svg",
+    "id": "006C14-0C00-000001",
+    "size": 1.0,
+    "source": "包山楚簡 2.218"
+   },
+   {
+    "char": "而",
+    "written_as": "而",
+    "layer": "chu",
+    "file": "6969.svg",
+    "id": "00800C-0C00-000001",
+    "size": 0.88,
+    "source": "新蔡葛陵楚簡·甲組 2.28"
+   },
+   {
+    "char": "飲",
+    "written_as": "㱃",
+    "layer": "chu",
+    "file": "0120.svg",
+    "id": "003C43-0C00-000001",
+    "size": 1.0,
+    "source": "天星觀卜筮祭禱簡 "
+   },
+   {
+    "char": "沆",
+    "written_as": "沆",
+    "layer": "seal",
+    "file": "3F01D.svg",
+    "id": "006C86-0E00-000001",
+    "size": 1.0
+   },
+   {
+    "char": "瀣",
+    "written_as": "瀣",
+    "layer": "seal",
+    "file": "3F157.svg",
+    "id": "007023-0E00-000001",
+    "size": 1.0
+   },
+   {
+    "char": "兮",
+    "written_as": "兮",
+    "layer": "chu",
+    "file": "1066.svg",
+    "id": "00516E-0C00-000001",
+    "size": 0.86,
+    "source": "包山楚簡 2.87"
+   }
+  ],
+  [
+   {
+    "char": "漱",
+    "written_as": "漱",
+    "layer": "seal",
+    "file": "3F123.svg",
+    "id": "006F31-0E00-000001",
+    "size": 1.0
+   },
+   {
+    "char": "正",
+    "written_as": "正",
+    "layer": "chu",
+    "file": "4746.svg",
+    "id": "006B63-0C00-000001",
+    "size": 0.86,
+    "source": "包山楚簡 2.18"
+   },
+   {
+    "char": "陽",
+    "written_as": "陽",
+    "layer": "chu",
+    "file": "9166.svg",
+    "id": "00967D-0C00-000002",
+    "size": 1.0,
+    "source": "新蔡葛陵楚簡·乙組 4.80"
+   },
+   {
+    "char": "而",
+    "written_as": "而",
+    "layer": "chu",
+    "file": "6968.svg",
+    "id": "00800C-0C00-000004",
+    "size": 0.88,
+    "source": "郭店楚簡 4"
+   },
+   {
+    "char": "含",
+    "written_as": "含",
+    "layer": "chu",
+    "file": "1766.svg",
+    "id": "00542B-0C00-000002",
+    "size": 0.92,
+    "source": "天星觀卜筮祭禱簡 "
+   },
+   {
+    "char": "朝",
+    "written_as": "朝",
+    "layer": "chu",
+    "file": "4351.svg",
+    "id": "00671D-0C00-000001",
+    "size": 1.0,
+    "source": "天星觀卜筮祭禱簡 "
+   },
+   {
+    "char": "霞",
+    "written_as": "霞",
+    "layer": "seal",
+    "file": "3F1E8.svg",
+    "id": "00971E-0E00-000001",
+    "size": 1.0
+   }
+  ],
+  [
+   {
+    "char": "保",
+    "written_as": "保",
+    "layer": "chu",
+    "file": "0825.svg",
+    "id": "004FDD-0C00-000005",
+    "size": 0.96,
+    "source": "上海博物館藏戰國楚竹書 9"
+   },
+   {
+    "char": "神",
+    "written_as": "神",
+    "layer": "chu",
+    "file": "6099.svg",
+    "id": "00795E-0C00-000003",
+    "size": 1.0,
+    "source": "長沙楚帛書·甲篇 3.36"
+   },
+   {
+    "char": "明",
+    "written_as": "明",
+    "layer": "chu",
+    "file": "4189.svg",
+    "id": "00660E-0C00-000002",
+    "size": 0.92,
+    "source": "長沙楚帛書·乙篇 9.16"
+   },
+   {
+    "char": "之",
+    "written_as": "之",
+    "layer": "chu",
+    "file": "0408.svg",
+    "id": "004E4B-0C00-000002",
+    "size": 0.82,
+    "source": "仰天湖楚簡 25.2"
+   },
+   {
+    "char": "清",
+    "written_as": "清",
+    "layer": "chu",
+    "file": "5089.svg",
+    "id": "006E05-0C00-000002",
+    "size": 1.0,
+    "source": "上海博物館藏戰國楚竹書 5"
+   },
+   {
+    "char": "澄",
+    "written_as": "澄",
+    "layer": "chuanchao",
+    "file": "8472.svg",
+    "id": "006F84-0J00-000001",
+    "size": 1.0,
+    "fat": 0
+   },
+   {
+    "char": "兮",
+    "written_as": "兮",
+    "layer": "chu",
+    "file": "1066.svg",
+    "id": "00516E-0C00-000001",
+    "size": 0.86,
+    "source": "包山楚簡 2.87"
+   }
+  ],
+  [
+   {
+    "char": "精",
+    "written_as": "精",
+    "layer": "chu",
+    "file": "6425.svg",
+    "id": "007CBE-0C00-000001",
+    "size": 1.0,
+    "source": "郭店楚簡 39"
+   },
+   {
+    "char": "氣",
+    "written_as": "气",
+    "layer": "chu",
+    "file": "4872.svg",
+    "id": "006C14-0C00-000003",
+    "size": 1.0,
+    "source": "長沙楚帛書·甲篇 3.17"
+   },
+   {
+    "char": "入",
+    "written_as": "入",
+    "layer": "chu",
+    "file": "1031.svg",
+    "id": "005165-0C00-000001",
+    "size": 0.8,
+    "source": "曾侯乙墓竹簡 1正"
+   },
+   {
+    "char": "而",
+    "written_as": "而",
+    "layer": "chu",
+    "file": "6970.svg",
+    "id": "00800C-0C00-000002",
+    "size": 0.88,
+    "source": "新蔡葛陵楚簡·零組 197"
+   },
+   {
+    "char": "粗",
+    "written_as": "粗",
+    "layer": "seal",
+    "file": "3E450.svg",
+    "id": "007C97-0E00-000001",
+    "size": 1.0
+   },
+   {
+    "char": "穢",
+    "written_as": "穢",
+    "layer": "chuanchao",
+    "file": "10532.svg",
+    "id": "007A62-0J00-000001",
+    "size": 1.0,
+    "fat": 13
+   },
+   {
+    "char": "除",
+    "written_as": "敘",
+    "layer": "chu",
+    "file": "4005.svg",
+    "id": "006558-0C00-000003",
+    "size": 1.0,
+    "source": "包山楚簡 2.138反"
+   }
+  ]
+ ]
+}

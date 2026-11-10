@@ -1,55 +1,35 @@
-# Basic Information 
+# Basic information
 title: Zhengyang Luo
 position: M.S. Student in ECE
 affiliation: University of Michigan
 affiliation_link: https://ece.engin.umich.edu/
 email: "cyruszyluo (at) gmail.com<br>zyluo (at) umich.edu"
+avatar: ./assets/img/avatar.jpg
 
-# Search Engine Optimization (SEO)
-# The following information is used to improve the website traffic from search engines, e.g., Google.
+# Search engines
 keywords: Zhengyang Luo, University of Michigan, HUST
 description: Personal homepage of Zhengyang Luo, M.S. student in ECE at the University of Michigan.
 canonical: https://cyrusluo.site/
 url: https://cyrusluo.site
 
-# Links 
-# If you don't need one of them, you may delete the corresponding line.
+# Profile links, shown as icons under the e-mail lines. Delete a line to hide its
+# icon; google_scholar, cv_link and twitter are also supported.
 github_link: https://github.com/peacewang017
 linkedin: https://www.linkedin.com/in/zhengyang-luo-6549802ba/
 
-# Images (e.g., your profile picture and your website's favicon) 
-# "favicon" and "favicon_dark" are used for the light and dark modes, respectively. 
-avatar: ./assets/img/avatar.jpg
-favicon: ./assets/img/favicon.png
-favicon_dark: ./assets/img/favicon-dark.png
-
-# Footnote
-# You may use the option to disable the footnote, "Powered by Jekyll and Minimal Light theme."
-enable_footnote: true
-
-# Auto Dark Mode
-# You may use the option to disable the automatic dark theme
-auto_dark_mode: true
-
-# Font
-# You can use this option to choose between Serif or Sans Serif fonts.
-font: "Serif" # or "Sans Serif"
-
-
+# The page brings its own layout and styles; without this line GitHub Pages falls
+# back to its default theme and ships that theme's stylesheet as well
+theme: null
 
 # Generates sitemap.xml for search engines
 plugins:
   - jekyll-sitemap
 
-# The following files will be removed from the generated website.
+# Kept out of the generated site
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-  - README_zh_Hans.md
-  - README_zh_Hant.md
-  - README_de.md
   - LICENSE
-  - minimal-light.gemspec
-  - html_source_file/
   - vendor/
+  - tools/

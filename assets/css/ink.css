@@ -1,0 +1,424 @@
+/*
+ * 墨 — a lacquer-black page.
+ *
+ * The ground is the warm black of Chu lacquerware and the ink is paper-white at
+ * a few dilutions; hierarchy comes from tone and a single heavier weight, not
+ * from colour. The only pigment is the vermilion of the seal. A hairline runs
+ * down the fold between the identity column and the text, and the classical
+ * note is kept faint: it lives only in the inscription at the foot of the
+ * identity column, set in Chu-script glyphs so that it reads like a rubbing.
+ *
+ * Type: Crimson Pro for text, Ubuntu Mono for the e-mail lines.
+ *   medium    the name, section headings (tracked capitals)
+ *   regular   everything
+ *   semibold  names of things (titles, places)
+ *   italic    the descriptor line under a title (venue, role, degree)
+ */
+
+/* ---------- Fonts (self-hosted subsets, see tools/subset_fonts.py) ---------- */
+
+@font-face {
+  font-family: "Crimson Pro";
+  src: url("../fonts/crimson-pro.woff2") format("woff2");
+  font-weight: 200 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Crimson Pro";
+  src: url("../fonts/crimson-pro-italic.woff2") format("woff2");
+  font-weight: 200 900; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("../fonts/ubuntu-mono.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+/* ---------- Tokens ---------- */
+
+:root {
+  --ground: #141311;  /* warm black, never pure */
+  --ink-1:  #f1ece2;  /* undiluted: the name, titles */
+  --ink-2:  #d4cec2;  /* body text */
+  --ink-3:  #a09a8e;  /* second voice: dates, venues, roles */
+  --ink-4:  #6c675d;  /* marginalia */
+  --rule:   #2f2c27;  /* hairlines */
+  --verse:  #bcb5a8;  /* the inscription */
+  --seal:   #b83a2a;  /* vermilion */
+  color-scheme: dark;
+
+  --serif: "Crimson Pro", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --mono:  "Ubuntu Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --side:    14.5rem;
+  --gutter:  4rem;
+  --measure: 44rem;
+  --top:     5.5rem;
+}
+
+/* ---------- Ground ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 112.5%;
+  background: var(--ground);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-color: var(--ink-4) var(--ground);
+}
+
+body {
+  position: relative;
+  z-index: 0;
+  margin: 0;
+  color: var(--ink-2);
+  font: 400 1rem/1.64 var(--serif);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-variant-numeric: lining-nums proportional-nums;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* A little tooth, and a breath of light from the upper left. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 .07 0 0 0 -.026'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 70% 55% at 18% 0%, rgba(255, 252, 245, .034), transparent 72%);
+}
+
+::selection { background: var(--ink-1); color: var(--ground); }
+
+a { color: inherit; }
+
+/* ---------- The page: identity | fold | text ---------- */
+
+.page {
+  display: grid;
+  grid-template-columns: var(--side) 1px minmax(0, var(--measure));
+  grid-template-rows: 1fr auto;
+  column-gap: var(--gutter);
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 1.5rem;
+}
+
+.side {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: start;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: var(--top) 0 3.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 3.2rem;
+  text-align: right;
+}
+
+.axis {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  background: var(--rule);
+}
+
+.main {
+  grid-column: 3;
+  grid-row: 1;
+  padding: var(--top) 0 0;
+  min-width: 0;
+}
+
+.colophon {
+  grid-column: 3;
+  grid-row: 2;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .2rem 1.5rem;
+  margin-top: 5rem;
+  padding: 1.1rem 0 3.4rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-3);
+  font-size: .88rem;
+}
+
+/* ---------- Identity column ---------- */
+
+.side-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.portrait {
+  display: block;
+  width: 6.6rem;
+  height: 6.6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  /* a thin ring, held off the picture */
+  outline: 1px solid var(--rule);
+  outline-offset: .34rem;
+}
+
+.name {
+  margin: 1.8rem 0 .7rem;
+  font: 500 2.1rem/1.1 var(--serif);
+  letter-spacing: 0;
+  color: var(--ink-1);
+}
+
+.role {
+  margin: 0;
+  line-height: 1.5;
+}
+.role a { text-decoration: none; }
+.role a:hover { color: var(--ink-1); }
+
+.contact {
+  margin: .8rem 0 0;
+  color: var(--ink-3);
+  font: 400 .8rem/1.7 var(--mono);
+}
+
+.links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+.links a {
+  display: block;
+  color: var(--ink-3);
+  transition: color .25s ease;
+}
+.links a:hover { color: var(--ink-1); }
+.links svg {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
+}
+
+/* ---------- Inscription ---------- */
+
+.inscription { margin: 0; }
+
+/* The verse is drawn from Chu-script glyphs (tools/build_verse_chu.py) and used
+   as a mask, so the ink takes its colour from the page. The seal sits under the
+   last column, which that script centres at 120/1230 of the width and ends at
+   1720/1990 of the height. */
+.verse {
+  position: relative;
+  display: block;
+  width: 6.3rem;
+}
+.verse-glyphs {
+  display: block;
+  aspect-ratio: 1230 / 1990;
+  background: var(--verse);
+  -webkit-mask: url("../img/verse-chu.svg") center / contain no-repeat;
+  mask: url("../img/verse-chu.svg") center / contain no-repeat;
+}
+.seal {
+  position: absolute;
+  left: calc(9.76% - .78rem);
+  top: 88.6%;
+  display: block;
+  width: 1.56rem;
+  height: 1.56rem;
+  color: var(--seal);
+}
+
+/* ---------- Text column ---------- */
+
+.main h2 {
+  margin: 3.5rem 0 1.15rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid var(--rule);
+  font: 500 .84rem/1.2 var(--serif);
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: var(--ink-1);
+}
+.main > h2:first-child { margin-top: 0; }
+
+.main p { margin: 0 0 1rem; text-wrap: pretty; }
+
+.main a {
+  color: var(--ink-1);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+  text-decoration-color: var(--ink-4);
+  transition: text-decoration-color .25s ease;
+}
+.main a:hover { text-decoration-color: var(--ink-1); }
+
+.main strong { font-weight: 600; color: var(--ink-1); }
+
+.main ul, .main ol {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.main p + ul, .main p + ol { margin-top: -.35rem; }
+.main li {
+  position: relative;
+  padding-left: 1.35em;
+}
+.main li + li { margin-top: .12rem; }
+/* a short dash with the weight of the text beside it, not a hairline */
+.main li::before {
+  content: "";
+  position: absolute;
+  left: .05em;
+  top: .78em;
+  width: .62em;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--ink-3);
+}
+
+.note { color: var(--ink-3); font-style: italic; }
+
+/* ---------- Publications ---------- */
+
+.pub { margin-bottom: 1.5rem; }
+.pub-title {
+  color: var(--ink-1);
+  font-weight: 600;
+  line-height: 1.42;
+  text-wrap: balance;
+}
+.pub-authors { margin-top: .15rem; }
+.pub-venue { color: var(--ink-3); font-style: italic; }
+.pub-links {
+  display: flex;
+  align-items: center;
+  gap: 1.05rem;
+  margin-top: .6rem;
+}
+.main .pub-links a {
+  display: block;
+  color: var(--ink-3);
+  text-decoration: none;
+  transition: color .25s ease;
+}
+.main .pub-links a:hover { color: var(--ink-1); }
+.pub-links svg {
+  display: block;
+  height: 1.12rem;
+  width: auto;
+  fill: currentColor;
+}
+
+/* ---------- Experience & education ---------- */
+
+.exp { margin-bottom: 1.35rem; }
+.exp-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 1.2rem;
+}
+.exp-org { color: var(--ink-1); font-weight: 600; }
+.exp-date {
+  margin-left: auto;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.exp-role { color: var(--ink-3); font-style: italic; }
+.exp-desc { margin-top: .25rem; }
+
+.edu { display: flex; align-items: flex-start; gap: 1.05rem; }
+.edu-logo {
+  flex: none;
+  width: 2.7rem;
+  height: auto;
+  margin-top: .22rem;
+}
+.edu-body { flex: 1; min-width: 0; }
+
+/* The marks keep their colours and sit directly on the ground. The HUST emblem
+   is line art in a deep blue, so it is lifted a little to stay legible; the hues
+   are unchanged. */
+.edu-logo[src*="hust"] { filter: brightness(1.45) saturate(1.05); }
+
+/* ---------- Arrival ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .side-top, .main, .inscription, .colophon {
+    animation: settle 1.1s cubic-bezier(.2, .7, .2, 1) both;
+  }
+  .main { animation-delay: .12s; }
+  .inscription { animation-delay: .5s; animation-duration: 1.6s; }
+  .colophon { animation-delay: .3s; }
+  @keyframes settle {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+/* ---------- Short windows: let the identity column scroll with the page ---------- */
+
+@media (max-height: 740px) {
+  .side { position: static; height: auto; min-height: 100vh; }
+}
+
+/* ---------- Narrower desks ---------- */
+
+@media (max-width: 1180px) {
+  :root { --side: 13rem; --gutter: 3rem; }
+}
+@media (max-width: 1000px) {
+  :root { --side: 12rem; --gutter: 2.4rem; }
+  .name { font-size: 1.9rem; }
+}
+
+/* ---------- One column ---------- */
+
+@media (max-width: 860px) {
+  :root { --top: 3.2rem; }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    max-width: 38rem;
+    margin: 0 auto;
+    padding: 0 1.45rem;
+  }
+  .side { display: contents; }
+  .axis { display: none; }
+
+  .side-top {
+    order: 1;
+    align-items: flex-start;
+    padding-top: var(--top);
+    text-align: left;
+  }
+  .portrait { width: 5.4rem; height: 5.4rem; }
+  .name { margin-top: 1.5rem; }
+  .links { justify-content: flex-start; }
+
+  .main { order: 2; padding-top: 3rem; }
+  .main h2 { margin-top: 3rem; }
+
+  .inscription {
+    order: 3;
+    align-self: center;
+    margin: 4.2rem 0 .4rem;
+  }
+
+  .colophon { order: 4; margin-top: 3.4rem; }
+}
