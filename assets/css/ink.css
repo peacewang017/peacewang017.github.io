@@ -168,6 +168,8 @@ a { color: inherit; }
   /* a thin ring, held off the picture */
   outline: 1px solid var(--rule);
   outline-offset: .34rem;
+  /* the photo's pale wall glares on the black page; take it down a little */
+  filter: brightness(.8);
 }
 
 .name {
